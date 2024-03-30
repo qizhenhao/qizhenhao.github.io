@@ -17,8 +17,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/login.gif">
 <meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240326213819.jpg">
+<meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240330214310.jpg">
+<meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/1711806368133.png">
 <meta property="article:published_time" content="2024-03-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-30T03:29:13.012Z">
+<meta property="article:modified_time" content="2024-03-30T14:00:04.673Z">
 <meta property="article:author" content="齐星尘">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Qt">
@@ -218,11 +220,11 @@
 <p>首先日志分为了4大模块：</p>
 <p>日志入口模块：日志器，日志器管理器，</p>
 <p>代码亮点：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">logLevel::Level logLevel::FromString(std::string str)</span><br><span class="line">&#123;</span><br><span class="line">#define XX(xlevel,v) \</span><br><span class="line">        if(#xlevel == str||#v == str)\</span><br><span class="line">            return logLevel::xlevel;</span><br><span class="line">    XX(DEBUG,debug);</span><br><span class="line">    XX(INFO,info);</span><br><span class="line">    XX(WARN,warn);</span><br><span class="line">    XX(ERROR,erron);</span><br><span class="line">    XX(FATAL,fatal);</span><br><span class="line">#undef XX</span><br><span class="line">    return logLevel::UNKNOW;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">logLevel::Level <span class="title">logLevel::FromString</span><span class="params">(std::string str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> XX(xlevel,v) \</span></span><br><span class="line"><span class="meta">        <span class="keyword">if</span>(#xlevel == str||#v == str)\</span></span><br><span class="line"><span class="meta">            return logLevel::xlevel;</span></span><br><span class="line">    <span class="built_in">XX</span>(DEBUG,debug);</span><br><span class="line">    <span class="built_in">XX</span>(INFO,info);</span><br><span class="line">    <span class="built_in">XX</span>(WARN,warn);</span><br><span class="line">    <span class="built_in">XX</span>(ERROR,erron);</span><br><span class="line">    <span class="built_in">XX</span>(FATAL,fatal);</span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> XX</span></span><br><span class="line">    <span class="keyword">return</span> logLevel::UNKNOW;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>用define宏定义使代码简洁，逻辑变简单，但可读性降低了。</p>
 <p>复习到了C语言的可变参数列表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void logEvent::format(const char *fmt, ...)</span><br><span class="line">&#123;</span><br><span class="line">    va_list al;</span><br><span class="line">    va_start(al,fmt);</span><br><span class="line">    char *buf = nullptr;</span><br><span class="line">    int len = vasprintf(&amp;buf,fmt,al);</span><br><span class="line">    if(len != -1)&#123;</span><br><span class="line">        m_ss &lt;&lt; std::string(buf,len);</span><br><span class="line">        free(buf);</span><br><span class="line">    &#125;</span><br><span class="line">    va_end(al);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">logEvent::format</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *fmt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list al;</span><br><span class="line">    <span class="built_in">va_start</span>(al,fmt);</span><br><span class="line">    <span class="type">char</span> *buf = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">vasprintf</span>(&amp;buf,fmt,al);</span><br><span class="line">    <span class="keyword">if</span>(len != <span class="number">-1</span>)&#123;</span><br><span class="line">        m_ss &lt;&lt; std::<span class="built_in">string</span>(buf,len);</span><br><span class="line">        <span class="built_in">free</span>(buf);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">va_end</span>(al);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>va_list是定义可变参数列表，va_start代表的是绑定fmt后的参数，va_end是销毁al可变参数列表；补充  va_arg 是将al变量指向下一个参数，并且将变量当成va_arg 函数的第二个参数（第二个参数是type）</p>
 <h6 id="3月29号"><a href="#3月29号" class="headerlink" title="3月29号"></a>3月29号</h6><p>​	今天通过gdb的调试终于把日志的业务逻辑搞懂了，主要有四个板块，日志器，事件，解析器，日志输出口。</p>
@@ -230,6 +232,18 @@
 <p>整个过程有点麻烦，但是这样写有很大的优点。</p>
 <p>1、控制能力强，比如说可以给不同的日志输出口new不同的解析器，在单线程中用一个日志器绑定这些输出口，等等使用方法限制小，可操作性高。</p>
 <p>2、性能强大，在多线程中，可以设置不同的日志器，不同的日志器都绑定成不同的解析器，输出口。在不同的线程中只有日志器管理器分配日志器时需要加锁，其他过程都无需同步，等待时间少，性能强大。</p>
+<h6 id="3月30号"><a href="#3月30号" class="headerlink" title="3月30号"></a>3月30号</h6><img src="/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240330214310.jpg" style="zoom: 33%;">
+
+<p>进行了客户端下一个页面的设计：</p>
+<p><img src="/2024/03/23/qidianliaotian/1711806368133.png"></p>
+<p>在此页面的好友列表用List Widget+自定义控件实现。</p>
+<p>如何实现页面跳转？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">login::on_local_btn_released</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(local_net == <span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    	local_net = <span class="keyword">new</span> <span class="built_in">Widget</span>( );</span><br><span class="line">	    <span class="built_in">connect</span>(local_net,&amp;Widget::noReturn,<span class="keyword">this</span>,&amp;login::show);</span><br><span class="line">    &#125;</span><br><span class="line">    local_net-&gt;<span class="built_in">show</span>();</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">hide</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>connect中的noRrturn是返回信号，按返回按键就可触发信号；</p>
+<p>qq_client类的作用？</p>
+<p>此类用于网络连接，存放数据。业务逻辑：进行TCP连接，首先登录成功后返回一个id，根据id查看id{XXX}.dat本地文件是否有个人信息文件（减少网络连接，提高服务器性能），没有此文件则通过TCP请求返回个人信息，获取好友列表信息，隔一段时间检查好友是否在线。</p>
+<p>此类的网络请求怎么异步处理，QT中Tcp异步编程的核心就是<code>Qt的信号槽机制</code>，无需创建线程，利用QT特性使代码更简便。</p>
 
       
 
@@ -517,22 +531,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -546,6 +544,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
             
             <div class="clearfix"></div>
