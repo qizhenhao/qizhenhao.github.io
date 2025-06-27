@@ -68,60 +68,60 @@ for shuzi in range(1,75):
 
 下面是wallhaven网站热门壁纸。果然，某些图片是第一生产力。因为不能上传太多，就随便传了几张，可以尝试自己爬取哦。
 
-![wallhaven-1p3kjg](wallhaven%E7%88%AC%E8%99%AB/wallhaven-1p3kjg.jpg)
+![wallhaven-1p3kjg](/images/wallhaven爬虫/wallhaven-1p3kjg.jpg)
 
-![wallhaven-2yemrm](wallhaven%E7%88%AC%E8%99%AB/wallhaven-2yemrm.jpg)
+![wallhaven-2yemrm](/images/wallhaven爬虫/wallhaven-2yemrm.jpg)
 
-![wallhaven-6dk7q7](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk7q7.jpg)
+![wallhaven-6dk7q7](/images/wallhaven爬虫/wallhaven-6dk7q7.jpg)
 
-![wallhaven-6dk8dw](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8dw.jpg)
+![wallhaven-6dk8dw](/images/wallhaven爬虫/wallhaven-6dk8dw.jpg)
 
-![wallhaven-6dk8jl](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8jl.jpg)
+![wallhaven-6dk8jl](/images/wallhaven爬虫/wallhaven-6dk8jl.jpg)
 
-![wallhaven-6dk8m7](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8m7.jpg)
+![wallhaven-6dk8m7](/images/wallhaven爬虫/wallhaven-6dk8m7.jpg)
 
-![wallhaven-6dk8y6](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8y6.png)
+![wallhaven-6dk8y6](/images/wallhaven爬虫/wallhaven-6dk8y6.png)
 
-![wallhaven-6dk38l](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk38l.png)
+![wallhaven-6dk38l](/images/wallhaven爬虫/wallhaven-6dk38l.png)
 
-![wallhaven-6dk39l](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk39l.jpg)
+![wallhaven-6dk39l](/images/wallhaven爬虫/wallhaven-6dk39l.jpg)
 
-![wallhaven-6dk89l](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk89l.jpg)
+![wallhaven-6dk89l](/images/wallhaven爬虫/wallhaven-6dk89l.jpg)
 
-![wallhaven-6dk326](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk326.jpg)
+![wallhaven-6dk326](/images/wallhaven爬虫/wallhaven-6dk326.jpg)
 
-![wallhaven-6dk356](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk356.jpg)
+![wallhaven-6dk356](/images/wallhaven爬虫/wallhaven-6dk356.jpg)
 
-![wallhaven-6dkd5l](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkd5l.jpg)
+![wallhaven-6dkd5l](/images/wallhaven爬虫/wallhaven-6dkd5l.jpg)
 
-![wallhaven-6dke3w](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dke3w.png)
+![wallhaven-6dke3w](/images/wallhaven爬虫/wallhaven-6dke3w.png)
 
-![wallhaven-6dkxlw](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxlw.jpg)
+![wallhaven-6dkxlw](/images/wallhaven爬虫/wallhaven-6dkxlw.jpg)
 
-![wallhaven-6dkxp6](wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxp6.jpg)
+![wallhaven-6dkxp6](/images/wallhaven爬虫/wallhaven-6dkxp6.jpg)
 
-![wallhaven-7p6zqy](wallhaven%E7%88%AC%E8%99%AB/wallhaven-7p6zqy.jpg)
+![wallhaven-7p6zqy](/images/wallhaven爬虫/wallhaven-7p6zqy.jpg)
 
-![wallhaven-9d611k](wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d611k.jpg)
+![wallhaven-9d611k](/images/wallhaven爬虫/wallhaven-9d611k.jpg)
 
-![wallhaven-9d612x](wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d612x.png)
+![wallhaven-9d612x](/images/wallhaven爬虫/wallhaven-9d612x.png)
 
-![wallhaven-gp8yz7](wallhaven%E7%88%AC%E8%99%AB/wallhaven-gp8yz7.jpg)
+![wallhaven-gp8yz7](/images/wallhaven爬虫/wallhaven-gp8yz7.jpg)
 
-![wallhaven-jx5d9y](wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5d9y.jpg)
+![wallhaven-jx5d9y](/images/wallhaven爬虫/wallhaven-jx5d9y.jpg)
 
-![wallhaven-jx5z3w](wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5z3w.jpg)
+![wallhaven-jx5z3w](/images/wallhaven爬虫/wallhaven-jx5z3w.jpg)
 
-![wallhaven-kxwzm7](wallhaven%E7%88%AC%E8%99%AB/wallhaven-kxwzm7.jpg)
+![wallhaven-kxwzm7](/images/wallhaven爬虫/wallhaven-kxwzm7.jpg)
 
-![wallhaven-l8ml8y](wallhaven%E7%88%AC%E8%99%AB/wallhaven-l8ml8y.jpg)
+![wallhaven-l8ml8y](/images/wallhaven爬虫/wallhaven-l8ml8y.jpg)
 
-![wallhaven-m3dq31](wallhaven%E7%88%AC%E8%99%AB/wallhaven-m3dq31.jpg)
+![wallhaven-m3dq31](/images/wallhaven爬虫/wallhaven-m3dq31.jpg)
 
-![wallhaven-o5x8z5](wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5x8z5.png)
+![wallhaven-o5x8z5](/images/wallhaven爬虫/wallhaven-o5x8z5.png)
 
-![wallhaven-o5xpg7](wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5xpg7.jpg)
+![wallhaven-o5xpg7](/images/wallhaven爬虫/wallhaven-o5xpg7.jpg)
 
-![wallhaven-p98e3j](wallhaven%E7%88%AC%E8%99%AB/wallhaven-p98e3j.jpg)
+![wallhaven-p98e3j](/images/wallhaven爬虫/wallhaven-p98e3j.jpg)
 
-![wallhaven-p9816j](wallhaven%E7%88%AC%E8%99%AB/wallhaven-p9816j.jpg)
+![wallhaven-p9816j](/images/wallhaven爬虫/wallhaven-p9816j.jpg)

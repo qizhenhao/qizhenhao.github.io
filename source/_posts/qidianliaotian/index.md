@@ -58,7 +58,7 @@ tags: [C++,Qt,项目]
 ### 登录模块
 
 ##### 前端展示
-![](qidianliaotian/login.gif)
+![](/images/qidianliaotian/login.gif)
 
 #### 2024年3月23日
 
@@ -104,7 +104,7 @@ tags: [C++,Qt,项目]
 ### Log4j 日志框架
 
 ##### 框架分析
-![](qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240326213819.jpg)
+![](/images/qidianliaotian/微信图片_20240326213819.jpg)
 
 #### 2024年3月26日
 
@@ -171,10 +171,10 @@ void logEvent::format(const char *fmt, ...)
 2.  **为多线程优化，性能强大**：在多线程环境中，可以为不同线程或模块设置不同的 `Logger` 实例。只有在通过 `LoggerManager` 获取 `Logger` 时需要加锁，后续的日志写入过程几乎是无锁的，大大减少了线程等待时间。
 
 #### 2024年3月30日
-<img src="qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240330214310.jpg" style="zoom: 33%;" />
+<img src="/images/qidianliaotian/微信图片_20240330214310.jpg" style="zoom: 33%;" />
 
 进行了客户端下一个页面的 UI 设计：
-![](qidianliaotian/1711806368133.png)
+![](/images/qidianliaotian/1711806368133.png)
 
 好友列表计划使用 `QListWidget` 结合自定义控件来实现。
 

@@ -9,7 +9,7 @@ tags:
 # MySql 学习大全
 
 <!-- more -->
-<img src="./MySql.assets/ac6eddc451da81cb037c289d5366d016082431c3" alt="img" style="zoom: 33%;" />
+<img src="/images/MySql/ac6eddc451da81cb037c289d5366d016082431c3" alt="img" style="zoom: 33%;" />
 
 MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面是最好的 RDBMS(Relational Database Management System) 应用软件之一。
 
@@ -49,19 +49,19 @@ MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面
 
 访问官方下载地址: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
 
-![image-20220109155744123](MySql.assets/image-20220109155744123.png)
+![image-20220109155744123](/images/MySql/image-20220109155744123.png)
 
 ### 2. 解压缩
 
 将下载的压缩包解压到一个合适的目录，注意：**路径中不能包含中文或空格**。
 
-![image-20220109155914692](MySql.assets/image-20220109155914692.png)
+![image-20220109155914692](/images/MySql/image-20220109155914692.png)
 
 ### 3. 配置环境变量
 
 将 MySQL 的 `bin` 目录路径（例如 `D:\dev\mysql-8.0.27-winx64\bin`）添加到系统的 `Path` 环境变量中。
 
-![image-20220109160530595](MySql.assets/image-20220109160530595.png)
+![image-20220109160530595](/images/MySql/image-20220109160530595.png)
 
 ### 4. 添加配置文件 `my.ini`【选做】
 
@@ -69,7 +69,7 @@ MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面
 
 在 MySQL 的根目录中，手动创建一个名为 `my.ini` 的文件。
 
-![image-20220301155716412](MySql.assets/image-20220301155716412.png)
+![image-20220301155716412](/images/MySql/image-20220301155716412.png)
 
 将以下内容复制到 `my.ini` 中，并**务必修改 `basedir` 和 `datadir` 为你自己的实际路径**。
 
@@ -106,7 +106,7 @@ default-character-set=utf8
 
 以**管理员身份**运行命令提示符 (CMD)。
 
-![image-20220301153607692](MySql.assets/image-20220301153607692.png)
+![image-20220301153607692](/images/MySql/image-20220301153607692.png)
 
 在 CMD 中执行以下命令，MySQL 会进行初始化并生成一个**临时密码**，请务必复制并保存好这个密码。
 
@@ -114,7 +114,7 @@ default-character-set=utf8
 mysqld --initialize --console
 ```
 
-![image-20220109161344549](MySql.assets/image-20220109161344549.png)
+![image-20220109161344549](/images/MySql/image-20220109161344549.png)
 
 ### 6. 安装 MySql 服务
 
@@ -124,7 +124,7 @@ mysqld --initialize --console
 mysqld --install
 ```
 
-![image-20220109161553618](MySql.assets/image-20220109161553618.png)
+![image-20220109161553618](/images/MySql/image-20220109161553618.png)
 
 ### 7. 启动服务
 
@@ -134,7 +134,7 @@ mysqld --install
 net start mysql
 ```
 
-![image-20220109161636471](MySql.assets/image-20220109161636471.png)
+![image-20220109161636471](/images/MySql/image-20220109161636471.png)
 
 ### 8. 登录 MySql 并修改密码
 
@@ -149,7 +149,7 @@ net start mysql
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345678';
     ```
 
-![image-20220109162341732](MySql.assets/image-20220109162341732.png)
+![image-20220109162341732](/images/MySql/image-20220109162341732.png)
 
 ### 9. 卸载 MySql（备用）
 
@@ -178,11 +178,11 @@ net start mysql
 
 ### 新建连接
 
-![image-20220109163327207](MySql.assets/image-20220109163327207.png)
+![image-20220109163327207](/images/MySql/image-20220109163327207.png)
 
 在 Navicat 中，点击"连接" -> "MySQL"，然后输入连接名、主机（`localhost`）、端口（`3306`）、用户名（`root`）和你刚才设置的新密码，点击"连接测试"，成功后保存即可。
 
-![image-20220109163434245](MySql.assets/image-20220109163434245.png)
+![image-20220109163434245](/images/MySql/image-20220109163434245.png)
 
 ---
 
@@ -190,7 +190,7 @@ net start mysql
 
 ### 数据库、表、数据的关系
 
-![03](MySql.assets/03.png)
+![03](/images/MySql/03.png)
 
 -   **数据库 (Database)**: 存储和管理数据的仓库，一个库可以包含多个数据表。
 -   **数据表 (Table)**: 数据库中最重要的组成部分，由行和列组成，类似 Excel 表格。
