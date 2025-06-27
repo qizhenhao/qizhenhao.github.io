@@ -1,5 +1,10 @@
 # 小齐的博客 - 源文件管理
 
+[![GitHub license](https://img.shields.io/github/license/q792943484/q792943484.github.io?style=flat-square)](./LICENSE)
+[![Built with Hexo](https://img.shields.io/badge/Built%20with-Hexo-blue?style=flat-square&logo=hexo)](https://hexo.io)
+[![Hosted on GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-green?style=flat-square&logo=github)](https://pages.github.com/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/q792943484/q792943484.github.io/source?style=flat-square)](https://github.com/q792943484/q792943484.github.io/tree/source)
+
 本项目是"小齐的博客"的源文件仓库，使用 [Hexo](https://hexo.io/) 框架构建。`source` 分支用于存放和管理所有的 Markdown 文章、主题配置及项目文件。
 
 通过遵循以下步骤，您可以在任何一台新电脑上快速恢复博客的写作环境。
