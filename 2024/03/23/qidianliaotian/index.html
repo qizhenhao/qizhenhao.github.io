@@ -2,6 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" />
+  <style>
+    /* 正文使用霞鹜文楷字体 */
+    .article-entry {
+      font-family: "LXGW WenKai", "霞鹜文楷", sans-serif;
+    }
+    /* 标题居中 */
+    .article-title {
+      text-align: center;
+    }
+    /* 文章大标题、各级标题、加粗及下划线文字设置为蓝色 */
+    .article-title,
+    .article-entry h1, .article-entry h2, .article-entry h3, .article-entry h4, .article-entry h5, .article-entry h6,
+    .article-entry strong, .article-entry b, .article-entry u {
+      color: #4169E1 !important; /* 使用 !important 强制覆盖主题原有样式 */
+    }
+  </style>
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -17,10 +35,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/login.gif">
 <meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240326213819.jpg">
-<meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240330214310.jpg">
-<meta property="og:image" content="http://example.com/2024/03/23/qidianliaotian/1711806368133.png">
 <meta property="article:published_time" content="2024-03-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-30T14:00:04.673Z">
+<meta property="article:modified_time" content="2025-06-27T17:33:29.066Z">
 <meta property="article:author" content="齐星尘">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="Qt">
@@ -74,7 +90,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 7
+			总文章数 8
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -192,58 +208,120 @@
         <p>#一个大型项目</p>
 <span id="more"></span>
 
-<h2 id="起点聊天室的详细介绍（暂未完结持续更新中）"><a href="#起点聊天室的详细介绍（暂未完结持续更新中）" class="headerlink" title="起点聊天室的详细介绍（暂未完结持续更新中）"></a>起点聊天室的详细介绍（暂未完结持续更新中）</h2><h5 id="介绍：包含了局域网，全局网络两个大模块。"><a href="#介绍：包含了局域网，全局网络两个大模块。" class="headerlink" title="介绍：包含了局域网，全局网络两个大模块。"></a>介绍：包含了局域网，全局网络两个大模块。</h5><h5 id="全局网"><a href="#全局网" class="headerlink" title="全局网"></a>全局网</h5><h6 id="目的：以QQ为参照，熟悉软件开发。"><a href="#目的：以QQ为参照，熟悉软件开发。" class="headerlink" title="目的：以QQ为参照，熟悉软件开发。"></a>目的：以QQ为参照，熟悉软件开发。</h6><h6 id="阿里云服务器服务器：Linux，C-，libevent，线程池，连接池，文件服务器，MySQL，Log4j日志框架，单例模式，观察者模式，gdb工具；"><a href="#阿里云服务器服务器：Linux，C-，libevent，线程池，连接池，文件服务器，MySQL，Log4j日志框架，单例模式，观察者模式，gdb工具；" class="headerlink" title="阿里云服务器服务器：Linux，C++，libevent，线程池，连接池，文件服务器，MySQL，Log4j日志框架，单例模式，观察者模式，gdb工具；"></a>阿里云服务器服务器：Linux，C++，libevent，线程池，连接池，文件服务器，MySQL，Log4j日志框架，单例模式，观察者模式，gdb工具；</h6><h6 id="客户端：Qt，信号与槽，RAII，文件IO，网络编程，多线程，Json；"><a href="#客户端：Qt，信号与槽，RAII，文件IO，网络编程，多线程，Json；" class="headerlink" title="客户端：Qt，信号与槽，RAII，文件IO，网络编程，多线程，Json；"></a>客户端：Qt，信号与槽，RAII，文件IO，网络编程，多线程，Json；</h6><h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><h6 id="1-登录模块"><a href="#1-登录模块" class="headerlink" title="1.登录模块"></a>1.登录模块</h6><p>​					A，通过文件IO，保存登录过的用户的登录头像，账号，选择性保存密码，通过选择账号，自动更新头像密码。</p>
-<p>​					B，无需账号密码登录局域网聊天系统；</p>
-<p>​					C，实现基本的自动登录，记住密码，找回密码，注册账号，安全登录；</p>
-<h6 id="2-个人信息模块"><a href="#2-个人信息模块" class="headerlink" title="2.个人信息模块"></a>2.个人信息模块</h6><p>​					A，个人信息修改，个人信息展示。</p>
-<h6 id="3-添加好友模块"><a href="#3-添加好友模块" class="headerlink" title="3.添加好友模块"></a>3.添加好友模块</h6><h6 id="4-个人聊天功能"><a href="#4-个人聊天功能" class="headerlink" title="4.个人聊天功能"></a>4.个人聊天功能</h6><h6 id="5-群聊功能"><a href="#5-群聊功能" class="headerlink" title="5.群聊功能"></a>5.群聊功能</h6><h5 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h5><h6 id="目的：在公司内部使用的聊天工具，目的为了防止信息泄露，无需服务器实现了轻量化的聊天，文件传输工具。"><a href="#目的：在公司内部使用的聊天工具，目的为了防止信息泄露，无需服务器实现了轻量化的聊天，文件传输工具。" class="headerlink" title="目的：在公司内部使用的聊天工具，目的为了防止信息泄露，无需服务器实现了轻量化的聊天，文件传输工具。"></a>目的：在公司内部使用的聊天工具，目的为了防止信息泄露，<strong>无需服务器</strong>实现了轻量化的聊天，文件传输工具。</h6><h6 id="技术点：Qt-Widget、网络编程、C-、文件IO、UDP服务器、TCP文件传输"><a href="#技术点：Qt-Widget、网络编程、C-、文件IO、UDP服务器、TCP文件传输" class="headerlink" title="技术点：Qt Widget、网络编程、C++、文件IO、UDP服务器、TCP文件传输"></a>技术点：Qt Widget、网络编程、C++、文件IO、UDP服务器、TCP文件传输</h6><h5 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h5><h6 id="1-实现了局域网内部的所有人群聊，私聊；"><a href="#1-实现了局域网内部的所有人群聊，私聊；" class="headerlink" title="1.实现了局域网内部的所有人群聊，私聊；"></a>1.实现了局域网内部的所有人群聊，私聊；</h6><h6 id="2-选择性的添加群聊；"><a href="#2-选择性的添加群聊；" class="headerlink" title="2.选择性的添加群聊；"></a>2.选择性的添加群聊；</h6><h6 id="3-TCP的文件传输；"><a href="#3-TCP的文件传输；" class="headerlink" title="3.TCP的文件传输；"></a>3.TCP的文件传输；</h6><hr>
-<h2 id="开发日志（暂未完结持续更新中）"><a href="#开发日志（暂未完结持续更新中）" class="headerlink" title="开发日志（暂未完结持续更新中）"></a>开发日志（暂未完结持续更新中）</h2><h4 id="登录模块："><a href="#登录模块：" class="headerlink" title="登录模块："></a>登录模块：</h4><h5 id="前端展示："><a href="#前端展示：" class="headerlink" title="前端展示："></a>前端展示：<img src="/2024/03/23/qidianliaotian/login.gif"></h5><h5 id="3月23号"><a href="#3月23号" class="headerlink" title="3月23号"></a>3月23号</h5><p>​	开发了login_dat接口，接口文档:</p>
-<p>​	接口介绍：此接口主要用于字节流存储读取头像，账号，密码，使用非常简洁。</p>
-<p>​	技术：RAII思想获取资源及初始化，用RAII管理user.dat文件的打开与关闭。	</p>
-<p>​	login_dat()</p>
-<p>​		构造过程自动识别并创建当前目录下”.&#x2F;user.dat”文件，如果有user.dat文件，自动读取文件中数据放到user_info_list中。</p>
-<p>​	~login_dat()</p>
-<p>​		析构函数，主要用于将内存中的user_info_list按照一定规律存储到user.dat文件。</p>
-<p>​	write_user_info(const QPixmap &amp;avater,const QString &amp;name,const QString &amp;password&#x3D;””);</p>
-<p>​		如果user_info_list中没有则将参数写入user_info_list中，有就什么都不做,最后的password默认参数是指两种写入格式，一种是无密码写入，一种是有密码写入。</p>
-<p>​	 get_user_info_list()—&gt;QVector<user_info>*</user_info></p>
-<p>​		返回user_info_list。</p>
-<p>​	is_has(const QString&amp; name) —&gt;bool;</p>
-<p>​		查看列表中是否有这个账号</p>
-<p>​	user.dat字节流格式：</p>
-<p>​			qint64（用户列表数量）—  byteArray（图片字节流）—   QString（账号）—  qint64(用户的密码是否存在？）—   QString（密码）——————————————————————————-</p>
-<h6 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h6><p>​	1.QPixmap与QByteArray之间的转化</p>
-<p>​		QPixmap.loadFromData(QByteArray)</p>
-<p>​		QBuffer(QByteArray)              QPixmap.save(buf)          buf.close()<br>​	为什么需要buf？</p>
-<p><code>因为QImage</code> 的 <code>save()</code> 方法需要一个设备接口来写入数据，而 <code>QByteArray</code> 本身并不提供这样的接口。通过 <code>QBuffer</code>，我们可以将 <code>QByteArray</code> 包装为一个 <code>QIODevice</code>，从而使得 <code>QImage</code> 能够将其数据写入到字节数组中。</p>
-<h4 id><a href="#" class="headerlink" title></a></h4><h4 id="Log4j日志框架"><a href="#Log4j日志框架" class="headerlink" title="Log4j日志框架"></a>Log4j日志框架</h4><h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：<img src="/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240326213819.jpg"></h5><h6 id="3月26号"><a href="#3月26号" class="headerlink" title="3月26号"></a>3月26号</h6><p>断断续续分析了两天了，大致框架终于搞懂了。</p>
-<p>首先日志分为了4大模块：</p>
-<p>日志入口模块：日志器，日志器管理器，</p>
-<p>代码亮点：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">logLevel::Level <span class="title">logLevel::FromString</span><span class="params">(std::string str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> XX(xlevel,v) \</span></span><br><span class="line"><span class="meta">        <span class="keyword">if</span>(#xlevel == str||#v == str)\</span></span><br><span class="line"><span class="meta">            return logLevel::xlevel;</span></span><br><span class="line">    <span class="built_in">XX</span>(DEBUG,debug);</span><br><span class="line">    <span class="built_in">XX</span>(INFO,info);</span><br><span class="line">    <span class="built_in">XX</span>(WARN,warn);</span><br><span class="line">    <span class="built_in">XX</span>(ERROR,erron);</span><br><span class="line">    <span class="built_in">XX</span>(FATAL,fatal);</span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> XX</span></span><br><span class="line">    <span class="keyword">return</span> logLevel::UNKNOW;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="起点聊天室的详细介绍"><a href="#起点聊天室的详细介绍" class="headerlink" title="起点聊天室的详细介绍"></a>起点聊天室的详细介绍</h2><blockquote>
+<p>本项目仍在持续更新中。</p>
+</blockquote>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>起点聊天室项目包含了<strong>局域网</strong>和<strong>全局网络</strong>两大模块。</p>
+<h3 id="全局网模块"><a href="#全局网模块" class="headerlink" title="全局网模块"></a>全局网模块</h3><ul>
+<li><strong>目的</strong>：以 QQ 为参照，熟悉大型即时通讯软件的开发流程。</li>
+<li><strong>服务端技术栈</strong>：<code>Linux</code>, <code>C++</code>, <code>libevent</code> 网络库, 线程池, 数据库连接池, 文件服务器, <code>MySQL</code>, <code>Log4j</code> 风格的日志框架, 单例模式, 观察者模式, <code>gdb</code> 调试工具。</li>
+<li><strong>客户端技术栈</strong>：<code>Qt</code>, 信号与槽, <code>RAII</code>, 文件 IO, 网络编程, 多线程, <code>Json</code> 解析。</li>
+</ul>
+<h4 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h4><ol>
+<li><strong>登录模块</strong><ul>
+<li>通过文件 IO 保存登录过的用户头像、账号，并可选择性保存密码。</li>
+<li>通过选择历史账号，自动填充头像和密码。</li>
+<li>支持无账号密码直接登录局域网聊天。</li>
+<li>实现自动登录、记住密码、找回密码、注册账号等基础功能。</li>
+</ul>
+</li>
+<li><strong>个人信息模块</strong><ul>
+<li>支持个人信息的修改与展示。</li>
+</ul>
+</li>
+<li><strong>好友系统</strong><ul>
+<li>支持添加好友。</li>
+</ul>
+</li>
+<li><strong>聊天功能</strong><ul>
+<li>实现一对一单人聊天。</li>
+<li>实现多人在线群聊。</li>
+</ul>
+</li>
+</ol>
+<h3 id="局域网模块"><a href="#局域网模块" class="headerlink" title="局域网模块"></a>局域网模块</h3><ul>
+<li><strong>目的</strong>：开发一个在公司内部使用的轻量化聊天与文件传输工具，防止信息泄露，<strong>无需中心服务器</strong>。</li>
+<li><strong>技术栈</strong>：<code>Qt Widget</code>, <code>C++</code>, 网络编程, 文件 IO, <code>UDP</code> 广播, <code>TCP</code> 文件传输。</li>
+</ul>
+<h4 id="主要功能-1"><a href="#主要功能-1" class="headerlink" title="主要功能"></a>主要功能</h4><ol>
+<li>实现局域网内所有用户的自动发现、群聊和私聊。</li>
+<li>支持选择性地加入或创建群聊。</li>
+<li>基于 <code>TCP</code> 的可靠文件传输。</li>
+</ol>
+<hr>
+<h2 id="开发日志"><a href="#开发日志" class="headerlink" title="开发日志"></a>开发日志</h2><blockquote>
+<p>本日志仍在持续更新中。</p>
+</blockquote>
+<h3 id="登录模块"><a href="#登录模块" class="headerlink" title="登录模块"></a>登录模块</h3><h5 id="前端展示"><a href="#前端展示" class="headerlink" title="前端展示"></a>前端展示</h5><p><img src="/2024/03/23/qidianliaotian/login.gif"></p>
+<h4 id="2024年3月23日"><a href="#2024年3月23日" class="headerlink" title="2024年3月23日"></a>2024年3月23日</h4><p>开发了 <code>login_dat</code> 接口，用于通过字节流高效地存储和读取用户的头像、账号及密码。</p>
+<p><strong>接口设计</strong></p>
+<ul>
+<li><strong>技术</strong>：利用 <code>RAII</code> 思想管理 <code>user.dat</code> 文件的资源，在构造时获取资源并初始化，在析构时自动关闭和保存。</li>
+<li><code>login_dat()</code><ul>
+<li>构造函数：自动识别并创建 <code>./user.dat</code> 文件。如果文件已存在，则自动读取数据到内存中的 <code>user_info_list</code>。</li>
+</ul>
+</li>
+<li><code>~login_dat()</code><ul>
+<li>析构函数：将内存中 <code>user_info_list</code> 的最新状态写回 <code>user.dat</code> 文件。</li>
+</ul>
+</li>
+<li><code>write_user_info(const QPixmap &amp;avater, const QString &amp;name, const QString &amp;password=&quot;&quot;)</code><ul>
+<li>将新的用户信息写入 <code>user_info_list</code>。如果用户已存在，则不进行任何操作。</li>
+</ul>
+</li>
+<li><code>get_user_info_list() ---&gt; QVector&lt;user_info&gt;*</code><ul>
+<li>返回 <code>user_info_list</code> 的指针。</li>
+</ul>
+</li>
+<li><code>is_has(const QString&amp; name) ---&gt; bool</code><ul>
+<li>检查指定账号是否存在。</li>
+</ul>
+</li>
+</ul>
+<p><strong><code>user.dat</code> 字节流格式</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">[qint64: 用户列表数量]<br>    [byteArray: 用户1头像] -&gt; [QString: 用户1账号] -&gt; [qint64: 密码是否存在] -&gt; [QString: 用户1密码]<br>    [byteArray: 用户2头像] -&gt; [QString: 用户2账号] -&gt; [qint64: 密码是否存在] -&gt; [QString: 用户2密码]<br>    ...<br></code></pre></td></tr></table></figure>
 
-<p>用define宏定义使代码简洁，逻辑变简单，但可读性降低了。</p>
-<p>复习到了C语言的可变参数列表：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">logEvent::format</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *fmt, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list al;</span><br><span class="line">    <span class="built_in">va_start</span>(al,fmt);</span><br><span class="line">    <span class="type">char</span> *buf = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">vasprintf</span>(&amp;buf,fmt,al);</span><br><span class="line">    <span class="keyword">if</span>(len != <span class="number">-1</span>)&#123;</span><br><span class="line">        m_ss &lt;&lt; std::<span class="built_in">string</span>(buf,len);</span><br><span class="line">        <span class="built_in">free</span>(buf);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">va_end</span>(al);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>开发难点</strong></p>
+<ol>
+<li><strong>QPixmap 与 QByteArray 之间的转化</strong><ul>
+<li>从 <code>QByteArray</code> 加载 <code>QPixmap</code>：<code>QPixmap.loadFromData(QByteArray)</code></li>
+<li>将 <code>QPixmap</code> 保存到 <code>QByteArray</code>：需要一个 <code>QBuffer</code> 作为中介。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">QByteArray bytes;<br><span class="hljs-function">QBuffer <span class="hljs-title">buffer</span><span class="hljs-params">(&amp;bytes)</span></span>;<br>buffer.<span class="hljs-built_in">open</span>(QIODevice::WriteOnly);<br>pixmap.<span class="hljs-built_in">save</span>(&amp;buffer, <span class="hljs-string">&quot;PNG&quot;</span>); <span class="hljs-comment">// format</span><br>buffer.<span class="hljs-built_in">close</span>();<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>为什么需要 QBuffer？</strong><br>因为 <code>QPixmap::save()</code> 方法需要一个 <code>QIODevice</code> 设备作为写入目标，而 <code>QByteArray</code> 本身不是 <code>QIODevice</code>。<code>QBuffer</code> 可以将 <code>QByteArray</code> 包装成一个内存中的 <code>QIODevice</code> 设备，从而让 <code>save()</code> 方法可以将图片数据写入到这个字节数组中。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Log4j-日志框架"><a href="#Log4j-日志框架" class="headerlink" title="Log4j 日志框架"></a>Log4j 日志框架</h3><h5 id="框架分析"><a href="#框架分析" class="headerlink" title="框架分析"></a>框架分析</h5><p><img src="/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240326213819.jpg"></p>
+<h4 id="2024年3月26日"><a href="#2024年3月26日" class="headerlink" title="2024年3月26日"></a>2024年3月26日</h4><p>断断续续分析了两天，大致框架终于搞懂了。日志系统主要分为四大模块：<strong>日志器 (Logger)<strong>、</strong>日志事件 (LogEvent)<strong>、</strong>格式化器 (Formatter)</strong> 和 **输出地 (Appender)**。</p>
+<p><strong>代码亮点：</strong></p>
+<p>使用宏定义简化字符串到枚举的转换，代码更简洁，但牺牲了一定的可读性。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">logLevel::Level <span class="hljs-title">logLevel::FromString</span><span class="hljs-params">(std::string str)</span></span><br><span class="hljs-function"></span>&#123;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> XX(xlevel, v) \</span><br><span class="hljs-meta">    <span class="hljs-keyword">if</span>(#xlevel == str || #v == str) \</span><br><span class="hljs-meta">        return logLevel::xlevel;</span><br>    <span class="hljs-built_in">XX</span>(DEBUG, debug);<br>    <span class="hljs-built_in">XX</span>(INFO, info);<br>    <span class="hljs-built_in">XX</span>(WARN, warn);<br>    <span class="hljs-built_in">XX</span>(ERROR, erron);<br>    <span class="hljs-built_in">XX</span>(FATAL, fatal);<br><span class="hljs-meta">#<span class="hljs-keyword">undef</span> XX</span><br>    <span class="hljs-keyword">return</span> logLevel::UNKNOW;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>va_list是定义可变参数列表，va_start代表的是绑定fmt后的参数，va_end是销毁al可变参数列表；补充  va_arg 是将al变量指向下一个参数，并且将变量当成va_arg 函数的第二个参数（第二个参数是type）</p>
-<h6 id="3月29号"><a href="#3月29号" class="headerlink" title="3月29号"></a>3月29号</h6><p>​	今天通过gdb的调试终于把日志的业务逻辑搞懂了，主要有四个板块，日志器，事件，解析器，日志输出口。</p>
-<p>有日志管理器（单例模式）是管理日志器的，默认情况下有一个名字为root的日志器，在root的日志器的构造中默认有一个std::out的日志输出口，一个默认的解析器，并且<strong>日志输出口的解析器指针默认指向root的日志器</strong>。事件就是存放了日志的内容（时间，目前代码执行行数，在那个文件中等等），最重要的是<strong>事件的构造必须要有一个日志器</strong>，用来管理此事件，事件包装器用于包装事件，在事件包装器调用析构函数时，事件用日志器的指针调用日志器的写入函数，将自己作为参数传入，在日志器中的写入函数，遍历可以写入的日志输出口列表，通过多态调用日志输出口的写入函数，在输出口里的写入函数通过遍历调用解析器的写入函数，解析器也是多态的思想实现，将log4j格式解析成item的不同子类，用多态调用这些子类的写入方法，最后在这些子类的写入方法中用事件的内容传入日志输出器，完成了一次写入。</p>
-<p>整个过程有点麻烦，但是这样写有很大的优点。</p>
-<p>1、控制能力强，比如说可以给不同的日志输出口new不同的解析器，在单线程中用一个日志器绑定这些输出口，等等使用方法限制小，可操作性高。</p>
-<p>2、性能强大，在多线程中，可以设置不同的日志器，不同的日志器都绑定成不同的解析器，输出口。在不同的线程中只有日志器管理器分配日志器时需要加锁，其他过程都无需同步，等待时间少，性能强大。</p>
-<h6 id="3月30号"><a href="#3月30号" class="headerlink" title="3月30号"></a>3月30号</h6><img src="/2024/03/23/qidianliaotian/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240330214310.jpg" style="zoom: 33%;">
-
-<p>进行了客户端下一个页面的设计：</p>
-<p><img src="/2024/03/23/qidianliaotian/1711806368133.png"></p>
-<p>在此页面的好友列表用List Widget+自定义控件实现。</p>
-<p>如何实现页面跳转？</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">login::on_local_btn_released</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(local_net == <span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">    	local_net = <span class="keyword">new</span> <span class="built_in">Widget</span>( );</span><br><span class="line">	    <span class="built_in">connect</span>(local_net,&amp;Widget::noReturn,<span class="keyword">this</span>,&amp;login::show);</span><br><span class="line">    &#125;</span><br><span class="line">    local_net-&gt;<span class="built_in">show</span>();</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">hide</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>connect中的noRrturn是返回信号，按返回按键就可触发信号；</p>
-<p>qq_client类的作用？</p>
-<p>此类用于网络连接，存放数据。业务逻辑：进行TCP连接，首先登录成功后返回一个id，根据id查看id{XXX}.dat本地文件是否有个人信息文件（减少网络连接，提高服务器性能），没有此文件则通过TCP请求返回个人信息，获取好友列表信息，隔一段时间检查好友是否在线。</p>
-<p>此类的网络请求怎么异步处理，QT中Tcp异步编程的核心就是<code>Qt的信号槽机制</code>，无需创建线程，利用QT特性使代码更简便。</p>
+<p>复习 C&#x2F;C++ 的可变参数列表：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">logEvent::format</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *fmt, ...)</span></span><br><span class="hljs-function"></span>&#123;<br>    va_list al;<br>    <span class="hljs-built_in">va_start</span>(al, fmt);<br>    <span class="hljs-type">char</span> *buf = <span class="hljs-literal">nullptr</span>;<br>    <span class="hljs-comment">// vasprintf会动态分配内存，需要手动free</span><br>    <span class="hljs-type">int</span> len = <span class="hljs-built_in">vasprintf</span>(&amp;buf, fmt, al);<br>    <span class="hljs-keyword">if</span>(len != <span class="hljs-number">-1</span>)&#123;<br>        m_ss &lt;&lt; std::<span class="hljs-built_in">string</span>(buf, len);<br>        <span class="hljs-built_in">free</span>(buf);<br>    &#125;<br>    <span class="hljs-built_in">va_end</span>(al);<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>va_list</code>: 定义一个指向可变参数列表的指针。</li>
+<li><code>va_start</code>: 初始化 <code>va_list</code> 指针，使其指向第一个可变参数。</li>
+<li><code>va_arg</code>: 读取当前参数，并使指针后移。</li>
+<li><code>va_end</code>: 清理可变参数列表。</li>
+</ul>
+<h4 id="2024年3月29日"><a href="#2024年3月29日" class="headerlink" title="2024年3月29日"></a>2024年3月29日</h4><p>通过 <code>gdb</code> 调试，终于把日志系统的核心业务逻辑彻底搞懂了。这是一个典型的责任链与多态结合的设计模式。</p>
+<p><strong>核心流程：</strong></p>
+<ol>
+<li>**日志管理器 (LoggerManager)**：采用单例模式管理所有的日志器。默认会创建一个名为 <code>root</code> 的根日志器。</li>
+<li>**日志器 (Logger)**：<code>root</code> 日志器在构造时，会默认创建一个标准输出 <code>StdOutAppender</code> 和一个默认格式 <code>DefaultFormatter</code>。</li>
+<li>**事件 (LogEvent)**：当代码中产生一条日志时，会创建一个 <code>LogEvent</code> 对象。该对象必须关联一个 <code>Logger</code>。</li>
+<li>**事件包装器 (LogEventWrap)**：<code>LogEvent</code> 通常被 <code>LogEventWrap</code> 包装。在 <code>LogEventWrap</code> 的析构函数中，它会调用 <code>Logger</code> 的写入函数，将 <code>LogEvent</code> 自身作为参数传入。</li>
+<li><strong>写入过程</strong>：<ul>
+<li><code>Logger</code> 收到 <code>LogEvent</code> 后，会遍历其下所有可用的 <code>Appender</code> 列表。</li>
+<li>通过多态调用每个 <code>Appender</code> 的写入函数。</li>
+<li>在 <code>Appender</code> 内部，再通过多态调用其关联的 <code>Formatter</code> 的解析函数。</li>
+<li><code>Formatter</code> 将日志格式字符串（如 &#96;%d</li>
+</ul>
+</li>
+</ol>
 
       
 
@@ -366,9 +444,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2025/06/28/iic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          BSP开发：IIC选通技术深度解析
+        
+      </div>
+    </a>
+  
   
     <a href="/2023/07/13/NAT_UPNP/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">NAT与UPNP技术</div>
+      <div class="article-nav-title">NAT与UPNP技术学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -440,7 +527,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2024 齐星尘
+    		&copy; 2025 齐星尘
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -475,6 +562,36 @@ if(!isFinite(o.call(this)))throw RangeError("Invalid time value");var t=this,n=t
 return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(26),u=e.key,c=e.set;e.exp({metadata:function(t,n){return function(r,e){c(t,n,(void 0!==e?i:o)(r),u(e))}}})},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(165)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(147)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(16),u=r(122),c=r(120),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(139)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padEnd:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padStart:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(82)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(82)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(153)("asyncIterator")},function(t,n,r){r(153)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){for(var e=r(155),i=r(28),o=r(3),u=r(27),c=r(80),f=r(7),a=f("iterator"),s=f("toStringTag"),l=c.Array,h=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],v=0;v<5;v++){var p,d=h[v],y=o[d],g=y&&y.prototype;if(g){g[a]||u(g,a,l),g[s]||u(g,s,d),c[d]=l;for(p in e)g[p]||i(g,p,e[p],!0)}}},function(t,n,r){var e=r(1),i=r(151);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(121),u=r(207),c=e.navigator,f=!!c&&/MSIE .\./.test(c.userAgent),a=function(t){return f?function(n,r){return t(o(u,[].slice.call(arguments,2),"function"==typeof n?n:Function(n)),r)}:t};i(i.G+i.B+i.F*f,{setTimeout:a(e.setTimeout),setInterval:a(e.setInterval)})},function(t,n,r){r(330),r(269),r(271),r(270),r(273),r(275),r(280),r(274),r(272),r(282),r(281),r(277),r(278),r(276),r(268),r(279),r(283),r(284),r(236),r(238),r(237),r(286),r(285),r(256),r(266),r(267),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(239),r(240),r(241),r(242),r(243),r(244),r(245),r(246),r(247),r(248),r(249),r(250),r(251),r(252),r(253),r(254),r(255),r(317),r(322),r(329),r(320),r(312),r(313),r(318),r(323),r(325),r(308),r(309),r(310),r(311),r(314),r(315),r(316),r(319),r(321),r(324),r(326),r(327),r(328),r(231),r(233),r(232),r(235),r(234),r(220),r(218),r(224),r(221),r(227),r(229),r(217),r(223),r(214),r(228),r(212),r(226),r(225),r(219),r(222),r(211),r(213),r(216),r(215),r(230),r(155),r(302),r(307),r(184),r(303),r(304),r(305),r(306),r(287),r(183),r(185),r(186),r(342),r(331),r(332),r(337),r(340),r(341),r(335),r(338),r(336),r(339),r(333),r(334),r(288),r(289),r(290),r(291),r(292),r(295),r(293),r(294),r(296),r(297),r(298),r(299),r(301),r(300),r(343),r(369),r(372),r(371),r(373),r(374),r(370),r(375),r(376),r(354),r(357),r(353),r(351),r(352),r(355),r(356),r(346),r(368),r(377),r(345),r(347),r(349),r(348),r(350),r(359),r(360),r(362),r(361),r(364),r(363),r(365),r(366),r(367),r(344),r(358),r(380),r(379),r(378),t.exports=r(52)},function(t,n){function r(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}t.exports=r},,,,,,,,,function(t,n,r){(function(n,r){!function(n){"use strict";function e(t,n,r,e){var i=n&&n.prototype instanceof o?n:o,u=Object.create(i.prototype),c=new p(e||[]);return u._invoke=s(t,r,c),u}function i(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function o(){}function u(){}function c(){}function f(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function a(t){function n(r,e,o,u){var c=i(t[r],t,e);if("throw"!==c.type){var f=c.arg,a=f.value;return a&&"object"==typeof a&&m.call(a,"__await")?Promise.resolve(a.__await).then(function(t){n("next",t,o,u)},function(t){n("throw",t,o,u)}):Promise.resolve(a).then(function(t){f.value=t,o(f)},u)}u(c.arg)}function e(t,r){function e(){return new Promise(function(e,i){n(t,r,e,i)})}return o=o?o.then(e,e):e()}"object"==typeof r&&r.domain&&(n=r.domain.bind(n));var o;this._invoke=e}function s(t,n,r){var e=P;return function(o,u){if(e===F)throw new Error("Generator is already running");if(e===M){if("throw"===o)throw u;return y()}for(r.method=o,r.arg=u;;){var c=r.delegate;if(c){var f=l(c,r);if(f){if(f===A)continue;return f}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(e===P)throw e=M,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);e=F;var a=i(t,n,r);if("normal"===a.type){if(e=r.done?M:j,a.arg===A)continue;return{value:a.arg,done:r.done}}"throw"===a.type&&(e=M,r.method="throw",r.arg=a.arg)}}}function l(t,n){var r=t.iterator[n.method];if(r===g){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=g,l(t,n),"throw"===n.method))return A;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return A}var e=i(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,A;var o=e.arg;return o?o.done?(n[t.resultName]=o.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=g),n.delegate=null,A):o:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,A)}function h(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function v(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(h,this),this.reset(!0)}function d(t){if(t){var n=t[w];if(n)return n.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var r=-1,e=function n(){for(;++r<t.length;)if(m.call(t,r))return n.value=t[r],n.done=!1,n;return n.value=g,n.done=!0,n};return e.next=e}}return{next:y}}function y(){return{value:g,done:!0}}var g,b=Object.prototype,m=b.hasOwnProperty,x="function"==typeof Symbol?Symbol:{},w=x.iterator||"@@iterator",S=x.asyncIterator||"@@asyncIterator",_=x.toStringTag||"@@toStringTag",O="object"==typeof t,E=n.regeneratorRuntime;if(E)return void(O&&(t.exports=E));E=n.regeneratorRuntime=O?t.exports:{},E.wrap=e;var P="suspendedStart",j="suspendedYield",F="executing",M="completed",A={},N={};N[w]=function(){return this};var T=Object.getPrototypeOf,I=T&&T(T(d([])));I&&I!==b&&m.call(I,w)&&(N=I);var k=c.prototype=o.prototype=Object.create(N);u.prototype=k.constructor=c,c.constructor=u,c[_]=u.displayName="GeneratorFunction",E.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===u||"GeneratorFunction"===(n.displayName||n.name))},E.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,c):(t.__proto__=c,_ in t||(t[_]="GeneratorFunction")),t.prototype=Object.create(k),t},E.awrap=function(t){return{__await:t}},f(a.prototype),a.prototype[S]=function(){return this},E.AsyncIterator=a,E.async=function(t,n,r,i){var o=new a(e(t,n,r,i));return E.isGeneratorFunction(n)?o:o.next().then(function(t){return t.done?t.value:o.next()})},f(k),k[_]="Generator",k.toString=function(){return"[object Generator]"},E.keys=function(t){var n=[];for(var r in t)n.push(r);return n.reverse(),function r(){for(;n.length;){var e=n.pop();if(e in t)return r.value=e,r.done=!1,r}return r.done=!0,r}},E.values=d,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=g,this.done=!1,this.delegate=null,this.method="next",this.arg=g,this.tryEntries.forEach(v),!t)for(var n in this)"t"===n.charAt(0)&&m.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=g)},stop:function(){this.done=!0;var t=this.tryEntries[0],n=t.completion;if("throw"===n.type)throw n.arg;return this.rval},dispatchException:function(t){function n(n,e){return o.type="throw",o.arg=t,r.next=n,e&&(r.method="next",r.arg=g),!!e}if(this.done)throw t;for(var r=this,e=this.tryEntries.length-1;e>=0;--e){var i=this.tryEntries[e],o=i.completion;if("root"===i.tryLoc)return n("end");if(i.tryLoc<=this.prev){var u=m.call(i,"catchLoc"),c=m.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return n(i.catchLoc,!0);if(this.prev<i.finallyLoc)return n(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return n(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return n(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&m.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,A):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),A},finish:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),v(r),A}},catch:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;v(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:d(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=g),A}}}("object"==typeof n?n:"object"==typeof window?window:"object"==typeof self?self:this)}).call(n,function(){return this}(),r(158))}])</script><script src="/./main.0cf68a.js"></script><script>!function(){!function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}("/slider.e37972.js")}()</script>
 
 
+
+<!-- 引入 Live2D 模型 -->
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js" defer></script>
+<script>
+	// 等待页面完全加载后再初始化 Live2D
+	window.addEventListener("load", () => {
+		L2Dwidget.init({
+			"pluginRootPath": "live2dw/",
+			"pluginJsPath": "lib/",
+			"pluginModelPath": "assets/",
+			"model": {
+				"jsonPath": "https://cdn.jsdelivr.net/npm/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",
+				"scale": 1
+			},
+			"display": {
+				"position": "left",
+				"width": 150,
+				"height": 300,
+				"hOffset": -15,
+				"vOffset": -15
+			},
+			"mobile": {
+				"show": true
+			},
+			"react": {
+				"opacity": 0.7
+			}
+		});
+	});
+</script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -527,7 +644,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">P2P</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">IIC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">嵌入式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,10 +685,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">项目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,6 +701,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
@@ -696,5 +841,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
 </div>
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</body>
 </html>

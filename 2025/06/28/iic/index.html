@@ -24,14 +24,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Qt | 小齐的博客</title>
+  <title>BSP开发：IIC选通技术深度解析 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小齐的博客">
-<meta property="og:url" content="http://example.com/tags/Qt/index.html">
+  <meta name="description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BSP开发：IIC选通技术深度解析">
+<meta property="og:url" content="http://example.com/2025/06/28/iic/index.html">
 <meta property="og:site_name" content="小齐的博客">
+<meta property="og:description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-27T17:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-27T17:29:49.698Z">
 <meta property="article:author" content="齐星尘">
+<meta property="article:tag" content="BSP">
+<meta property="article:tag" content="IIC">
+<meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
@@ -175,68 +182,254 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iic" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2024/03/23/qidianliaotian/" class="archive-article-date">
-  	<time datetime="2024-03-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2024/03/23/qidianliaotian/">起点聊天室详细介绍以及开发日志</a>
+    <h1 class="article-title" itemprop="name">
+      BSP开发：IIC选通技术深度解析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2025/06/28/iic/" class="archive-article-date">
+  	<time datetime="2025-06-27T17:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 <strong>IIC 选通 (IIC Multiplexing)</strong> 技术来解决这一问题。</p>
+<span id="more"></span>
+
+<h2 id="一、为什么需要-IIC-选通？"><a href="#一、为什么需要-IIC-选通？" class="headerlink" title="一、为什么需要 IIC 选通？"></a>一、为什么需要 IIC 选通？</h2><p>IIC 选通主要为了解决两个核心问题：</p>
+<ol>
+<li><strong>地址冲突</strong>：多个同型号的 IIC 设备拥有相同的、固定的设备地址，无法直接挂载在同一条总线上。</li>
+<li><strong>总线扩展</strong>：需要挂载的设备数量超过了 IIC 总线的负载能力或地址空间。</li>
+</ol>
+<p>通过引入 **IIC 选通器 (IIC Multiplexer&#x2F;Switch)**，例如经典的 <code>PCA9548A</code> (8路) 或 <code>PCA9546A</code> (4路)，我们就可以像切换电视频道一样，选择性地与某一个 IIC 设备进行通信。</p>
+<h2 id="二、IIC-选通器的工作原理"><a href="#二、IIC-选通器的工作原理" class="headerlink" title="二、IIC 选通器的工作原理"></a>二、IIC 选通器的工作原理</h2><p>IIC 选通器本身也是一个标准的 IIC 从设备，拥有自己唯一的设备地址。主控 MCU 通过向这个特定地址发送控制命令，来打开或关闭其内部的某个或某些通道，从而将主 IIC 总线连接到指定的子总线上。</p>
+<blockquote>
+<p><strong>核心流程：</strong> 主控 MCU → IIC 选通器 → 选通指定通道 → 主控 MCU 与目标设备通信。</p>
+</blockquote>
+<h2 id="三、BSP-层代码实现"><a href="#三、BSP-层代码实现" class="headerlink" title="三、BSP 层代码实现"></a>三、BSP 层代码实现</h2><p>在板级支持包 (BSP) 的设计中，我们需要将 IIC 选通的操作封装成简洁的接口，供上层应用调用。</p>
+<p>以下是以 <code>PCA9548A</code> 为例的伪代码实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> PCA9548A_ADDR 0x70 <span class="hljs-comment">// 选通器的 IIC 地址</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 选择要打开的 IIC 通道</span><br><span class="hljs-comment"> * @param channel 要选择的通道号 (0-7)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_select_channel</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel)</span><br>&#123;<br>  <span class="hljs-comment">// 控制字节的每一位对应一个通道，置 1 表示打开</span><br>  <span class="hljs-type">uint8_t</span> control_byte = <span class="hljs-number">1</span> &lt;&lt; channel; <br>  iic_master_write(PCA9548A_ADDR, &amp;control_byte, <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 从指定通道的设备读取数据</span><br><span class="hljs-comment"> * @param channel 通道号</span><br><span class="hljs-comment"> * @param dev_addr 目标设备地址</span><br><span class="hljs-comment"> * @param buf 数据缓冲区</span><br><span class="hljs-comment"> * @param len 数据长度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_device_read</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>  <span class="hljs-comment">// 步骤1: 选通指定的 IIC 通道</span><br>  iic_select_channel(channel);<br>  <br>  <span class="hljs-comment">// 步骤2: 在选通的通道上与目标设备通信</span><br>  iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器"><a href="#四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器" class="headerlink" title="四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)"></a>四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)</h2><p>在某些复杂的硬件设计中，可能会遇到需要操作两次 IIC 才能完成选通的场景。例如，硬件手册要求先向 CPLD (地址 <code>0x21</code>) 写入一个值，再向 IIC 选通器 (地址 <code>0x70</code>) 写入另一个值。</p>
+<p>这通常意味着系统中存在一个“多级选通”的结构。CPLD 在这里扮演了<strong>第一级开关</strong>或<strong>总闸</strong>的角色。不打开这个总闸，IIC 信号可能根本无法到达下一级的 IIC 选通器。</p>
+<h4 id="硬件链路分析"><a href="#硬件链路分析" class="headerlink" title="硬件链路分析"></a>硬件链路分析</h4><p>这个硬件链路可以可视化为：<br>+———–+ +—————-+ +————————–+ +———–+<br>(一级开关)		(二级开关)		<br>+———–+ +—————-+ +————————–+ +———–+</p>
+<h4 id="操作流程分析"><a href="#操作流程分析" class="headerlink" title="操作流程分析"></a>操作流程分析</h4><ol>
+<li>**操作 CPLD (0x21)**：这一步的目的是打开“总闸”，将主控的 IIC 总线物理连接到下一级的 IIC 选通器。</li>
+<li>**操作 IIC 选通器 (0x70)**：在总闸打开后，再操作这个“二级开关”，精细地选择最终要通信的目标设备通道。</li>
+</ol>
+<h4 id="伪代码实现"><a href="#伪代码实现" class="headerlink" title="伪代码实现"></a>伪代码实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> CPLD_IIC_ADDR 0x21</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MUX_IIC_ADDR 0x70</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">access_nested_iic_device</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> cpld_cmd, <span class="hljs-type">uint8_t</span> mux_channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>    <span class="hljs-comment">// 步骤1: 操作 CPLD，打开 IIC 物理链路</span><br>    iic_master_write(CPLD_IIC_ADDR, &amp;cpld_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤2: 操作 IIC 选通器，选择具体通道</span><br>    <span class="hljs-type">uint8_t</span> mux_cmd = <span class="hljs-number">1</span> &lt;&lt; mux_channel;<br>    iic_master_write(MUX_IIC_ADDR, &amp;mux_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤3: 访问最终的目标设备</span><br>    iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="五、设计建议与常见问题"><a href="#五、设计建议与常见问题" class="headerlink" title="五、设计建议与常见问题"></a>五、设计建议与常见问题</h2><blockquote>
+<h3 id="bulb-设计建议"><a href="#bulb-设计建议" class="headerlink" title=":bulb: 设计建议"></a>:bulb: 设计建议</h3><ol>
+<li><strong>抽象接口</strong>：将复杂的选通逻辑封装成简洁的接口，上层应用无需关心底层细节。</li>
+<li><strong>互斥保护</strong>：在多任务环境 (RTOS) 中，必须为 IIC 总线操作（包括选通和设备访问）添加互斥锁（Mutex），防止竞态条件。</li>
+<li><strong>错误处理</strong>：完整地处理选通失败、设备无响应 (NACK) 等异常情况，保证系统的健壮性。</li>
+</ol>
+</blockquote>
+<blockquote>
+<h3 id="warning-常见问题"><a href="#warning-常见问题" class="headerlink" title=":warning: 常见问题"></a>:warning: 常见问题</h3><ul>
+<li><strong>忘记切换&#x2F;关闭通道</strong>：访问完一个设备后，未切换或关闭通道就去访问另一通道上的设备，导致访问错误。</li>
+<li><strong>地址冲突</strong>：IIC 选通器自身的地址与总线上的某个外设地址重复。</li>
+<li><strong>总线拉电流能力</strong>：挂载设备过多或总线过长，导致上拉电阻不匹配，波形异常，通信失败。</li>
+</ul>
+</blockquote>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>IIC 选通是嵌入式系统中解决 IIC 总线地址冲突和扩展问题的关键技术。在 BSP 开发中，我们需要深刻理解其硬件原理，封装稳定可靠的软件接口，并充分考虑多级选通、多任务访问和错误处理等情况，才能构建出高效、健壮的嵌入式系统。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>递一支烟<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/0B44D864CB9D2E10183759742A37138E.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/F4CDF8297E6116B089FA5E99DD4E17F4.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BSP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IIC</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/06/28/iic/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2024/03/23/qidianliaotian/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">起点聊天室详细介绍以及开发日志</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+
+   <section id="comments" class="comments">
+     <style>
+       .comments{margin:30px;padding:10px;background:#fff}
+       @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+     </style>
+     <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+	var randNum =  Math.floor(Math.random() * 10) + 1;
+	window.onload = function() {
+
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "pa80VmFuVAAfDPPhcZRPDhwf-gzGzoHsz",
+            app_key: "VyywdGldMrWr6sPqmkh9676u",
+            placeholder: "Just go go",
+            avatar:"monsterid"
+        });
+    }
+</script>
+
+ </section>
 
 
           </div>
@@ -263,9 +456,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
