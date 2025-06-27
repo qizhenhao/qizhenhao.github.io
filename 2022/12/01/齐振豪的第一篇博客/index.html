@@ -24,21 +24,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>BSP开发：IIC选通技术深度解析 | 小齐的博客</title>
+  <title>小齐的第一篇博客 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
+  <meta name="description" content="进来听听歌">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BSP开发：IIC选通技术深度解析">
-<meta property="og:url" content="http://example.com/2025/06/28/iic/index/index.html">
+<meta property="og:title" content="小齐的第一篇博客">
+<meta property="og:url" content="http://example.com/2022/12/01/%E9%BD%90%E6%8C%AF%E8%B1%AA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="小齐的博客">
-<meta property="og:description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
+<meta property="og:description" content="进来听听歌">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-27T17:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-27T17:29:49.698Z">
+<meta property="article:published_time" content="2022-12-01T10:13:23.000Z">
+<meta property="article:modified_time" content="2025-06-27T19:54:24.811Z">
 <meta property="article:author" content="齐星尘">
-<meta property="article:tag" content="BSP">
-<meta property="article:tag" content="IIC">
-<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
@@ -182,67 +180,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iic/index" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-齐振豪的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BSP开发：IIC选通技术深度解析
+      小齐的第一篇博客
     </h1>
   
 
         
-        <a href="/2025/06/28/iic/index/" class="archive-article-date">
-  	<time datetime="2025-06-27T17:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-06-28</time>
+        <a href="/2022/12/01/%E9%BD%90%E6%8C%AF%E8%B1%AA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2022-12-01T10:13:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 <strong>IIC 选通 (IIC Multiplexing)</strong> 技术来解决这一问题。</p>
-<span id="more"></span>
+        <h2 id="进来听听歌"><a href="#进来听听歌" class="headerlink" title="进来听听歌"></a>进来听听歌</h2><span id="more"></span>
 
-<h2 id="一、为什么需要-IIC-选通？"><a href="#一、为什么需要-IIC-选通？" class="headerlink" title="一、为什么需要 IIC 选通？"></a>一、为什么需要 IIC 选通？</h2><p>IIC 选通主要为了解决两个核心问题：</p>
-<ol>
-<li><strong>地址冲突</strong>：多个同型号的 IIC 设备拥有相同的、固定的设备地址，无法直接挂载在同一条总线上。</li>
-<li><strong>总线扩展</strong>：需要挂载的设备数量超过了 IIC 总线的负载能力或地址空间。</li>
-</ol>
-<p>通过引入 **IIC 选通器 (IIC Multiplexer&#x2F;Switch)**，例如经典的 <code>PCA9548A</code> (8路) 或 <code>PCA9546A</code> (4路)，我们就可以像切换电视频道一样，选择性地与某一个 IIC 设备进行通信。</p>
-<h2 id="二、IIC-选通器的工作原理"><a href="#二、IIC-选通器的工作原理" class="headerlink" title="二、IIC 选通器的工作原理"></a>二、IIC 选通器的工作原理</h2><p>IIC 选通器本身也是一个标准的 IIC 从设备，拥有自己唯一的设备地址。主控 MCU 通过向这个特定地址发送控制命令，来打开或关闭其内部的某个或某些通道，从而将主 IIC 总线连接到指定的子总线上。</p>
+<p>恭喜你，成功打开了我的第一篇博客！</p>
+<p>希望这首歌能给你带来好心情。祝你的人生，一路顺风！</p>
+<div style="display: flex; justify-content: center;">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=1341328661&auto=0&height=66"></iframe>
+</div>
+
 <blockquote>
-<p><strong>核心流程：</strong> 主控 MCU → IIC 选通器 → 选通指定通道 → 主控 MCU 与目标设备通信。</p>
+<p>从这里开始，记录成长，分享生活。加油！</p>
 </blockquote>
-<h2 id="三、BSP-层代码实现"><a href="#三、BSP-层代码实现" class="headerlink" title="三、BSP 层代码实现"></a>三、BSP 层代码实现</h2><p>在板级支持包 (BSP) 的设计中，我们需要将 IIC 选通的操作封装成简洁的接口，供上层应用调用。</p>
-<p>以下是以 <code>PCA9548A</code> 为例的伪代码实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> PCA9548A_ADDR 0x70 <span class="hljs-comment">// 选通器的 IIC 地址</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 选择要打开的 IIC 通道</span><br><span class="hljs-comment"> * @param channel 要选择的通道号 (0-7)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_select_channel</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel)</span><br>&#123;<br>  <span class="hljs-comment">// 控制字节的每一位对应一个通道，置 1 表示打开</span><br>  <span class="hljs-type">uint8_t</span> control_byte = <span class="hljs-number">1</span> &lt;&lt; channel; <br>  iic_master_write(PCA9548A_ADDR, &amp;control_byte, <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 从指定通道的设备读取数据</span><br><span class="hljs-comment"> * @param channel 通道号</span><br><span class="hljs-comment"> * @param dev_addr 目标设备地址</span><br><span class="hljs-comment"> * @param buf 数据缓冲区</span><br><span class="hljs-comment"> * @param len 数据长度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_device_read</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>  <span class="hljs-comment">// 步骤1: 选通指定的 IIC 通道</span><br>  iic_select_channel(channel);<br>  <br>  <span class="hljs-comment">// 步骤2: 在选通的通道上与目标设备通信</span><br>  iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器"><a href="#四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器" class="headerlink" title="四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)"></a>四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)</h2><p>在某些复杂的硬件设计中，可能会遇到需要操作两次 IIC 才能完成选通的场景。例如，硬件手册要求先向 CPLD (地址 <code>0x21</code>) 写入一个值，再向 IIC 选通器 (地址 <code>0x70</code>) 写入另一个值。</p>
-<p>这通常意味着系统中存在一个“多级选通”的结构。CPLD 在这里扮演了<strong>第一级开关</strong>或<strong>总闸</strong>的角色。不打开这个总闸，IIC 信号可能根本无法到达下一级的 IIC 选通器。</p>
-<h4 id="硬件链路分析"><a href="#硬件链路分析" class="headerlink" title="硬件链路分析"></a>硬件链路分析</h4><p>这个硬件链路可以可视化为：<br>+———–+ +—————-+ +————————–+ +———–+<br>(一级开关)		(二级开关)		<br>+———–+ +—————-+ +————————–+ +———–+</p>
-<h4 id="操作流程分析"><a href="#操作流程分析" class="headerlink" title="操作流程分析"></a>操作流程分析</h4><ol>
-<li>**操作 CPLD (0x21)**：这一步的目的是打开“总闸”，将主控的 IIC 总线物理连接到下一级的 IIC 选通器。</li>
-<li>**操作 IIC 选通器 (0x70)**：在总闸打开后，再操作这个“二级开关”，精细地选择最终要通信的目标设备通道。</li>
-</ol>
-<h4 id="伪代码实现"><a href="#伪代码实现" class="headerlink" title="伪代码实现"></a>伪代码实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> CPLD_IIC_ADDR 0x21</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MUX_IIC_ADDR 0x70</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">access_nested_iic_device</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> cpld_cmd, <span class="hljs-type">uint8_t</span> mux_channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>    <span class="hljs-comment">// 步骤1: 操作 CPLD，打开 IIC 物理链路</span><br>    iic_master_write(CPLD_IIC_ADDR, &amp;cpld_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤2: 操作 IIC 选通器，选择具体通道</span><br>    <span class="hljs-type">uint8_t</span> mux_cmd = <span class="hljs-number">1</span> &lt;&lt; mux_channel;<br>    iic_master_write(MUX_IIC_ADDR, &amp;mux_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤3: 访问最终的目标设备</span><br>    iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="五、设计建议与常见问题"><a href="#五、设计建议与常见问题" class="headerlink" title="五、设计建议与常见问题"></a>五、设计建议与常见问题</h2><blockquote>
-<h3 id="bulb-设计建议"><a href="#bulb-设计建议" class="headerlink" title=":bulb: 设计建议"></a>:bulb: 设计建议</h3><ol>
-<li><strong>抽象接口</strong>：将复杂的选通逻辑封装成简洁的接口，上层应用无需关心底层细节。</li>
-<li><strong>互斥保护</strong>：在多任务环境 (RTOS) 中，必须为 IIC 总线操作（包括选通和设备访问）添加互斥锁（Mutex），防止竞态条件。</li>
-<li><strong>错误处理</strong>：完整地处理选通失败、设备无响应 (NACK) 等异常情况，保证系统的健壮性。</li>
-</ol>
-</blockquote>
-<blockquote>
-<h3 id="warning-常见问题"><a href="#warning-常见问题" class="headerlink" title=":warning: 常见问题"></a>:warning: 常见问题</h3><ul>
-<li><strong>忘记切换&#x2F;关闭通道</strong>：访问完一个设备后，未切换或关闭通道就去访问另一通道上的设备，导致访问错误。</li>
-<li><strong>地址冲突</strong>：IIC 选通器自身的地址与总线上的某个外设地址重复。</li>
-<li><strong>总线拉电流能力</strong>：挂载设备过多或总线过长，导致上拉电阻不匹配，波形异常，通信失败。</li>
-</ul>
-</blockquote>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>IIC 选通是嵌入式系统中解决 IIC 总线地址冲突和扩展问题的关键技术。在 BSP 开发中，我们需要深刻理解其硬件原理，封装稳定可靠的软件接口，并充分考虑多级选通、多任务访问和错误处理等情况，才能构建出高效、健壮的嵌入式系统。</p>
 
       
 
@@ -287,15 +255,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BSP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IIC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -351,7 +311,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/06/28/iic/index/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/12/01/%E9%BD%90%E6%8C%AF%E8%B1%AA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -365,11 +325,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="/2024/03/23/qidianliaotian/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">起点聊天室详细介绍以及开发日志</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2022/12/05/wallhaven%E7%88%AC%E8%99%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          wallhaven爬虫
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -556,6 +520,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
@@ -592,18 +564,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -613,6 +573,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">

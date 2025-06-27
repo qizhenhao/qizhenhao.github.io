@@ -24,21 +24,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>NAT与UPNP技术学习笔记 | 小齐的博客</title>
+  <title>力扣1043和368 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文内容主要整理自胡军、周剑扬、师佳三位老师的论文《P2P 网络中 UPnP 穿越 NAT 的研究与实现》，并结合个人理解进行排版优化，仅供学习使用。">
+  <meta name="description" content="#动态规划两道题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NAT与UPNP技术学习笔记">
-<meta property="og:url" content="http://example.com/2023/07/13/NAT_UPNP/index/index.html">
+<meta property="og:title" content="力扣1043和368">
+<meta property="og:url" content="http://example.com/2023/04/19/%E5%8A%9B%E6%89%A31043%E5%92%8C368/index.html">
 <meta property="og:site_name" content="小齐的博客">
-<meta property="og:description" content="本文内容主要整理自胡军、周剑扬、师佳三位老师的论文《P2P 网络中 UPnP 穿越 NAT 的研究与实现》，并结合个人理解进行排版优化，仅供学习使用。">
+<meta property="og:description" content="#动态规划两道题">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-13T13:19:14.000Z">
-<meta property="article:modified_time" content="2025-06-27T18:53:19.079Z">
+<meta property="article:published_time" content="2023-04-19T02:23:00.000Z">
+<meta property="article:modified_time" content="2025-06-27T19:54:24.810Z">
 <meta property="article:author" content="齐星尘">
-<meta property="article:tag" content="计网">
-<meta property="article:tag" content="P2P">
-<meta property="article:tag" content="NAT">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
@@ -182,91 +181,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-NAT_UPNP/index" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-力扣1043和368" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      NAT与UPNP技术学习笔记
+      力扣1043和368
     </h1>
   
 
         
-        <a href="/2023/07/13/NAT_UPNP/index/" class="archive-article-date">
-  	<time datetime="2023-07-13T13:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-13</time>
+        <a href="/2023/04/19/%E5%8A%9B%E6%89%A31043%E5%92%8C368/" class="archive-article-date">
+  	<time datetime="2023-04-19T02:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>本文内容主要整理自胡军、周剑扬、师佳三位老师的论文《P2P 网络中 UPnP 穿越 NAT 的研究与实现》，并结合个人理解进行排版优化，仅供学习使用。</p>
-</blockquote>
+        <p>#动态规划两道题</p>
 <span id="more"></span>
 
-<h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0. 引言"></a>0. 引言</h2><p>在 IPv4 的地址空间日益紧张的背景下，网络地址转换（NAT）技术被广泛应用以实现 IP 地址的重用。这虽然缓解了地址枯竭问题，但也给 P2P (Peer-to-Peer) 应用带来了巨大的通信障碍：</p>
-<ol>
-<li><strong>单向访问</strong>：位于 NAT 后面的内网节点（拥有私有 IP）可以主动访问公网，但公网节点无法主动访问内网节点。</li>
-<li><strong>服务限制</strong>：内网节点无法作为服务端为公网提供服务。</li>
-</ol>
-<p>为了解决这些问题，学术界和工业界提出了多种 NAT 穿越方案，如服务器转发、反向连接以及 UDP 打洞等。本文将重点介绍一种利用 <strong>UPnP (Universal Plug and Play)</strong> 技术，通过其<strong>自动端口映射 (Auto-Port-Mapping)</strong> 功能来实现 NAT 穿越的方案。</p>
-<h2 id="1-UPnP-穿越-NAT-的原理与实现"><a href="#1-UPnP-穿越-NAT-的原理与实现" class="headerlink" title="1. UPnP 穿越 NAT 的原理与实现"></a>1. UPnP 穿越 NAT 的原理与实现</h2><h3 id="1-1-核心原理"><a href="#1-1-核心原理" class="headerlink" title="1.1 核心原理"></a>1.1 核心原理</h3><p>UPnP 穿越 NAT 的核心思想是：<strong>在 NAT 设备上动态地创建一个临时的”端口转发”规则</strong>。</p>
-<p>具体流程如下：</p>
-<ol>
-<li>内网的客户端程序通过 UPnP 协议，请求其所在的 NAT 设备（通常是路由器）将某个公网端口（如 <code>8081</code>）的所有流量，转发到该客户端的内网 IP 和指定端口（如 <code>192.168.1.100:8080</code>）。</li>
-<li>客户端将这个成功映射的公网 IP 和端口（<code>公网IP:8081</code>）注册到一个公网服务器上。</li>
-<li>当另一个 P2P 节点（例如节点 B）想要与这个客户端（节点 A）通信时，它从公网服务器获取节点 A 注册的公网地址信息。</li>
-<li>节点 B 直接向节点 A 的 <code>公网IP:8081</code> 发送数据，NAT 设备会根据之前创建的映射规则，自动将数据转发给内网的节点 A，从而实现穿越。</li>
-</ol>
-<h3 id="1-2-自动端口映射的程序设计"><a href="#1-2-自动端口映射的程序设计" class="headerlink" title="1.2 自动端口映射的程序设计"></a>1.2 自动端口映射的程序设计</h3><p>根据 UPnP 规范，实现自动端口映射主要涉及以下几个步骤：</p>
-<ol>
-<li><p><strong>发现 (Discovery)</strong></p>
-<ul>
-<li>客户端向 UPnP 的标准多播地址 <code>239.255.255.250:1900</code> 发送一个 <code>M-SEARCH</code> 查找请求。</li>
-<li>网络中支持 UPnP 的 NAT 设备（路由器）会响应这个请求，并回复一个包含设备描述文件 URL 的消息。</li>
-</ul>
-</li>
-<li><p><strong>描述 (Description)</strong></p>
-<ul>
-<li>客户端通过上一步获取的 URL，下载一个 XML 格式的设备描述文件。</li>
-<li>解析这个 XML 文件，可以得到设备的详细信息，包括设备类型、服务列表以及最重要的——<strong>控制 URL</strong>。</li>
-</ul>
-</li>
-<li><p><strong>控制 (Control)</strong></p>
-<ul>
-<li>客户端向第二步获取的控制 URL 发送一个遵循 SOAP 协议的 XML 控制消息。</li>
-<li>通过发送不同的控制消息，可以实现端口映射的<strong>增加 (AddPortMapping)<strong>、</strong>删除 (DeletePortMapping)</strong> 或<strong>查询 (GetPortMapping)</strong> 等操作。</li>
-</ul>
-</li>
-</ol>
-<p>原论文作者将这些功能用 C++ 封装成了一个名为 <code>upnpd.dll</code> 的动态链接库，以便于客户端程序调用。</p>
-<h2 id="2-系统两端的程序设计"><a href="#2-系统两端的程序设计" class="headerlink" title="2. 系统两端的程序设计"></a>2. 系统两端的程序设计</h2><h3 id="2-1-服务器端"><a href="#2-1-服务器端" class="headerlink" title="2.1 服务器端"></a>2.1 服务器端</h3><p>服务器在整个方案中扮演”中间人”的角色，其功能相对简单：</p>
-<ul>
-<li>记录所有客户端登录时注册的公网端口映射信息。</li>
-<li>处理客户端的登录、登出请求。</li>
-<li>响应客户端获取其他在线用户列表的请求。<br>这种方式极大地减轻了服务器的负担，避免了在服务器上直接转发所有 P2P 流量，节约了服务器资源和带宽。</li>
-</ul>
-<h3 id="2-2-客户端"><a href="#2-2-客户端" class="headerlink" title="2.2 客户端"></a>2.2 客户端</h3><p>客户端的功能则相对复杂：</p>
-<ol>
-<li>启动后，创建一个本地 Socket 并绑定到固定端口（如 <code>8080</code>）。</li>
-<li>连接公网服务器，并从服务器获取经过 NAT 转换后的公网 IP 和端口（如 <code>公网IP:8081</code>）。</li>
-<li>判断自身是否位于 NAT 之后。如果是，则调用 <code>AddPortMapping</code> 函数，请求路由器将公网端口 <code>8081</code> 映射到内网端口 <code>8080</code>。</li>
-<li>通过 <code>Getu</code> 命令从服务器获取在线用户列表。</li>
-<li>通过 <code>Send</code> 命令与其他客户端直接通信。</li>
-<li>退出时，通过 <code>Exit</code> 命令调用 <code>DeletePortMapping</code> 函数，删除之前建立的端口映射。</li>
-</ol>
-<h2 id="3-结论"><a href="#3-结论" class="headerlink" title="3. 结论"></a>3. 结论</h2><p>使用 UPnP 的自动端口映射功能进行 NAT 穿越，是一种高效且可靠的 P2P 通信方案。它适用于客户端位于单个 NAT 之后的多种网络情况。</p>
-<p>此方案建立的端口映射通常是<strong>静态</strong>的，即使用户在一段时间内没有数据收发，映射关系也不会被 NAT 设备自动收回。这保证了 P2P 连接的稳定性和可靠性，是实现真正意义上直接通信的关键。</p>
-<h2 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4. 参考文献"></a>4. 参考文献</h2><ol>
-<li>UPnP 论坛贡献成员. <em>PnP 设备架构[S]</em>. UPnP 标准组织委员会, 2000: 2-11.</li>
-<li>林丽闽, 别红霞等译. <em>标准 C++宝典[M]</em>. 北京: 电子工业出版社, 2001.</li>
-<li>Bryan Ford, Pyda Srisuresh, Dan Kegel. <em>Peer-to-Peer(P2P) Communication Across Network Address Translators(NATs) [DB&#x2F;OL]</em>. 2004-12-12.</li>
-<li>李河, 王树明. <em>P2P 网络中使用 UDP 穿越 NAT 的方法研究[J]</em>. 吉林大学学报(信息科学版), 2003, 21(3).</li>
-<li>刘扬, 董开坤, 刘杨, 迟乐军. <em>对等网络中穿越 NAT 解决方案的研究[J]</em>. 计算机工程与设计, 2008, 6(29).</li>
-</ol>
+<h1 id="1043-分隔数组以得到最大和-力扣（LeetCode）"><a href="#1043-分隔数组以得到最大和-力扣（LeetCode）" class="headerlink" title="1043. 分隔数组以得到最大和 - 力扣（LeetCode）"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-array-for-maximum-sum/">1043. 分隔数组以得到最大和 - 力扣（LeetCode）</a></h1><h3 id="方法一（过不了）：树状数组＋dfs"><a href="#方法一（过不了）：树状数组＋dfs" class="headerlink" title="方法一（过不了）：树状数组＋dfs"></a>方法一（过不了）：树状数组＋dfs</h3><p>用dfs暴力搜索时间复杂度为指数型，用树状数组优化，但还是指数型</p>
+<p>介绍一下树状数组：</p>
+<p>【五分钟丝滑动画讲解 | 树状数组】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ce411u7qP/?share_source=copy_web&amp;vd_source=c9899d0504fa271ca6db5ef82d1a6bbb">https://www.bilibili.com/video/BV1ce411u7qP/?share_source=copy_web&amp;vd_source=c9899d0504fa271ca6db5ef82d1a6bbb</a></p>
+<p>树状数组的作用，</p>
+<p>1.以O(logN)找到一个下表的 i 到 j 的和</p>
+<p>2.以O(logN)更新一个下表的数字</p>
+<p>3.空间复杂度为O(N)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;<span class="hljs-type">int</span>&gt; tr;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowerBit</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> (i&amp;-i);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> i,<span class="hljs-type">int</span> z)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">for</span>(;i&lt;tr.<span class="hljs-built_in">size</span>();i+=<span class="hljs-built_in">lowerBit</span>(i))<br>        &#123;<br>            tr[i]+=z;<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(;i&gt;<span class="hljs-number">0</span>;i-=<span class="hljs-built_in">lowerBit</span>(i))<br>        &#123;<br>            res+=tr[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<span class="hljs-comment">//树状数组的定义</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSumAfterPartitioning</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        tr = <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(arr.<span class="hljs-built_in">size</span>()+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>);<br>        <span class="hljs-type">int</span> ma=<span class="hljs-number">0</span>;<br>        function&lt;<span class="hljs-type">void</span>(<span class="hljs-type">int</span>)&gt; dfs = [&amp;](<span class="hljs-type">int</span> dex)&#123;<br>            <span class="hljs-keyword">if</span>(dex==arr.<span class="hljs-built_in">size</span>())<span class="hljs-comment">//下表超出，找到总和</span><br>            &#123;<br><br>                ma = <span class="hljs-built_in">max</span>(ma,<span class="hljs-built_in">query</span>(tr.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>));<br>                <span class="hljs-keyword">return</span>;<br>            &#125;<br>            <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=dex;i&lt;arr.<span class="hljs-built_in">size</span>()&amp;&amp;i-dex&lt;k;i++)<br>            &#123;<br>                <br>                res = <span class="hljs-built_in">max</span>(res,arr[i]);<br>                <br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=dex+<span class="hljs-number">1</span>;j&lt;=i+<span class="hljs-number">1</span>;j++)<br>                &#123;<br>                    <span class="hljs-built_in">add</span>(j,res);<br>                &#125;<br>                <span class="hljs-built_in">dfs</span>(i+<span class="hljs-number">1</span>);<span class="hljs-comment">//更新tr，递归后删除更新的数值</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=dex+<span class="hljs-number">1</span>;j&lt;=i+<span class="hljs-number">1</span>;j++)<br>                &#123;<br>                    <span class="hljs-built_in">add</span>(j,-res);<br>                &#125;<br>            &#125;<br>        &#125;;<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> ma;<br>    &#125;   <br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="方法二：dp"><a href="#方法二：dp" class="headerlink" title="方法二：dp"></a>方法二：dp</h3><p>简单分析一下找到数组的最大值，就是找到n的位置于n的前k项进行组合找到最大值</p>
+<p>dp中储存的就是当前下表大小的数组的和最大值</p>
+<p>推出动态方程 	dp[i] &#x3D; max(dp[i],dp[j]+valmax*(i-j));</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>   <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSumAfterPartitioning</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">pd</span><span class="hljs-params">(arr.size()+<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-comment">//多一个是为了让以dp[0]=0开头，让下表i存的是前i项之和包括i</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;arr.<span class="hljs-built_in">size</span>()+<span class="hljs-number">1</span>;i++)<br>        &#123;<br>            <span class="hljs-type">int</span> maxv=arr[i<span class="hljs-number">-1</span>];<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i<span class="hljs-number">-1</span>;j&gt;=<span class="hljs-number">0</span>&amp;&amp;i-j&lt;=k;j--)<br>            &#123;<br>                pd[i] = <span class="hljs-built_in">max</span>(pd[i],pd[j]+(i-j)*maxv);<br>                <span class="hljs-keyword">if</span>(j&gt;<span class="hljs-number">0</span>)<br>                    maxv = <span class="hljs-built_in">max</span>(maxv,arr[j<span class="hljs-number">-1</span>]);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pd[arr.<span class="hljs-built_in">size</span>()];<br>    &#125;   <br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度O(NK) 空间是O(N)</p>
+<h1 id="368-最大整除子集-力扣（LeetCode）"><a href="#368-最大整除子集-力扣（LeetCode）" class="headerlink" title="368. 最大整除子集 - 力扣（LeetCode）"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-divisible-subset/">368. 最大整除子集 - 力扣（LeetCode）</a></h1><h2 id="dp-数学（简单的数学）："><a href="#dp-数学（简单的数学）：" class="headerlink" title="dp+数学（简单的数学）："></a>dp+数学（简单的数学）：</h2><p>数学方面就是：在一个集合中使各个元素的最大公因数，最小公倍数是两个数本身</p>
+<p>也就是说一个数能被另一个数整除</p>
+<p><strong>一个大于集合的所有数判断是否能被集合中所有元素整除，只需要判断能被集合中最大的数整除</strong></p>
+<p>所以先对nums排序</p>
+<p>dp方程为dp[i] &#x3D; max(dp[j]+1);</p>
+<p>保存最大的值，从最大的值开始往前找，找到连续可行的子序列</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">largestDivisibleSubset</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(),nums.<span class="hljs-built_in">end</span>());<br>        vector&lt;<span class="hljs-type">int</span>&gt;ans;<br>        vector&lt;pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">mp</span>(nums.<span class="hljs-built_in">size</span>(),&#123;<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>&#125;);<br>        <span class="hljs-type">int</span> ma=<span class="hljs-number">-1</span>,biao=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;nums.<span class="hljs-built_in">size</span>();i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i<span class="hljs-number">-1</span>;j&gt;=<span class="hljs-number">0</span>;j--)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(nums[i]%nums[j]==<span class="hljs-number">0</span>&amp;&amp;mp[i].first&lt;mp[j].first)<br>                &#123;<br>                    mp[i].first = mp[j].first;<br>                    mp[i].second = j;<br>                &#125;<br>            &#125;<br>            mp[i].first++;<br>            <span class="hljs-keyword">if</span>(ma&lt;mp[i].first)<br>            &#123;<br>                ma = mp[i].first;<br>                biao = i;<br>            &#125;<br>        &#125;<br>        <br>        <span class="hljs-keyword">while</span>(biao&gt;=<span class="hljs-number">0</span>)<br>        &#123;<br>            ans.<span class="hljs-built_in">push_back</span>(nums[biao]);<br>            biao = mp[biao].second;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度O(N^2)</p>
+<p>空间复杂度O(2N)</p>
 
       
 
@@ -311,15 +275,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">P2P</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NAT</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		
 		</ul>
@@ -375,7 +335,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/07/13/NAT_UPNP/index/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/19/%E5%8A%9B%E6%89%A31043%E5%92%8C368/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -389,18 +349,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2024/03/23/qidianliaotian/index/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/04/26/%E5%8A%9B%E6%89%A31031/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          起点聊天室详细介绍以及开发日志
+          力扣1031
         
       </div>
     </a>
   
   
-    <a href="/2023/06/13/MySql/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySql 全方位学习笔记</div>
+    <a href="/2022/12/05/wallhaven%E7%88%AC%E8%99%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">wallhaven爬虫</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -589,6 +549,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
@@ -625,18 +593,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -646,6 +602,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">

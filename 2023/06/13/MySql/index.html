@@ -24,22 +24,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>力扣1031 | 小齐的博客</title>
+  <title>MySql 全方位学习笔记 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#两个非重叠子数组的最大和">
+  <meta name="description" content="MySql 学习大全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣1031">
-<meta property="og:url" content="http://example.com/2023/04/26/%E5%8A%9B%E6%89%A31031/index/index.html">
+<meta property="og:title" content="MySql 全方位学习笔记">
+<meta property="og:url" content="http://example.com/2023/06/13/MySql/index.html">
 <meta property="og:site_name" content="小齐的博客">
-<meta property="og:description" content="#两个非重叠子数组的最大和">
+<meta property="og:description" content="MySql 学习大全">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-04-26T06:15:00.000Z">
-<meta property="article:modified_time" content="2023-04-26T06:34:41.535Z">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/ac6eddc451da81cb037c289d5366d016082431c3">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109155744123.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109155914692.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109160530595.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220301155716412.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220301153607692.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109161344549.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109161553618.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109161636471.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109162341732.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109163327207.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/image-20220109163434245.png">
+<meta property="og:image" content="http://example.com/2023/06/13/MySql/03.png">
+<meta property="article:published_time" content="2023-06-13T13:56:14.000Z">
+<meta property="article:modified_time" content="2025-06-27T19:54:24.298Z">
 <meta property="article:author" content="齐星尘">
-<meta property="article:tag" content="算法">
-<meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/06/13/MySql/ac6eddc451da81cb037c289d5366d016082431c3">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
   
@@ -182,42 +195,131 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-力扣1031/index" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MySql" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      力扣1031
+      MySql 全方位学习笔记
     </h1>
   
 
         
-        <a href="/2023/04/26/%E5%8A%9B%E6%89%A31031/index/" class="archive-article-date">
-  	<time datetime="2023-04-26T06:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-26</time>
+        <a href="/2023/06/13/MySql/" class="archive-article-date">
+  	<time datetime="2023-06-13T13:56:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="两个非重叠子数组的最大和"><a href="#两个非重叠子数组的最大和" class="headerlink" title="#两个非重叠子数组的最大和"></a>#两个非重叠子数组的最大和</h1><br>
+        <h1 id="MySql-学习大全"><a href="#MySql-学习大全" class="headerlink" title="MySql 学习大全"></a>MySql 学习大全</h1><span id="more"></span>
+<img src="/2023/06/13/MySql/ac6eddc451da81cb037c289d5366d016082431c3" alt="img" style="zoom: 33%;">
 
-<span id="more"></span>
+<p>MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面是最好的 RDBMS(Relational Database Management System) 应用软件之一。</p>
+<h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p>数据库（Database）是按照特定数据结构来组织、存储和管理数据的仓库。</p>
+<p>虽然我们可以将数据存储在普通文件中，但当数据量庞大时，在文件中进行读写、查找和管理的效率会变得非常低下。</p>
+<p>因此，现代应用普遍使用关系型数据库管理系统（RDBMS）来高效地存储和管理海量数据。所谓的关系型数据库，是建立在关系模型基础上的数据库，它借助于集合代数等数学概念和方法来处理数据。</p>
+<h3 id="RDBMS-的特点"><a href="#RDBMS-的特点" class="headerlink" title="RDBMS 的特点"></a>RDBMS 的特点</h3><ol>
+<li>**数据以表格的形式出现 (Table)**：这是关系型数据库的核心。</li>
+<li>**每行为一条记录 (Row&#x2F;Record)**：代表一个实体的一组相关数据。</li>
+<li>**每列为一个字段 (Column&#x2F;Field)**：包含同一种类型的数据。</li>
+<li>许多的行和列组成一张**表 (Table)**。</li>
+<li>若干的表组成一个**数据库 (Database)**。</li>
+</ol>
+<h2 id="RDBMS-核心术语"><a href="#RDBMS-核心术语" class="headerlink" title="RDBMS 核心术语"></a>RDBMS 核心术语</h2><ul>
+<li><strong>数据库 (Database):</strong> 是一些关联表的集合。</li>
+<li><strong>数据表 (Table):</strong> 表是数据的矩阵，看起来像一个简单的电子表格。</li>
+<li><strong>列 (Column):</strong> 一列(数据元素) 包含了相同类型的数据, 例如邮政编码。</li>
+<li><strong>行 (Row):</strong> 一行（也称元组或记录）是一组相关的数据，例如一条用户信息。</li>
+<li><strong>主键 (Primary Key):</strong> 表中的唯一标识符。一个数据表中只能包含一个主键，用于快速查询和保证数据唯一性。</li>
+<li><strong>外键 (Foreign Key):</strong> 用于在一个表中引用另一个表中的记录，以建立两个表之间的关联。</li>
+<li><strong>复合键 (Composite Key):</strong> 将多个列组合起来作为一个主键或唯一索引。</li>
+<li><strong>索引 (Index):</strong> 一种特殊的数据结构，用于快速访问数据库表中的特定信息，类似于书籍的目录，可以极大地提高查询速度。</li>
+<li><strong>参照完整性 (Referential Integrity):</strong> 要求关系中不允许引用不存在的实体。这是保证数据一致性的重要约束。</li>
+</ul>
+<hr>
+<h2 id="MySql-安装指南-Windows"><a href="#MySql-安装指南-Windows" class="headerlink" title="MySql 安装指南 (Windows)"></a>MySql 安装指南 (Windows)</h2><h3 id="1-下载-MySql"><a href="#1-下载-MySql" class="headerlink" title="1. 下载 MySql"></a>1. 下载 MySql</h3><p>访问官方下载地址: <a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p><img src="/2023/06/13/MySql/image-20220109155744123.png" alt="image-20220109155744123"></p>
+<h3 id="2-解压缩"><a href="#2-解压缩" class="headerlink" title="2. 解压缩"></a>2. 解压缩</h3><p>将下载的压缩包解压到一个合适的目录，注意：<strong>路径中不能包含中文或空格</strong>。</p>
+<p><img src="/2023/06/13/MySql/image-20220109155914692.png" alt="image-20220109155914692"></p>
+<h3 id="3-配置环境变量"><a href="#3-配置环境变量" class="headerlink" title="3. 配置环境变量"></a>3. 配置环境变量</h3><p>将 MySQL 的 <code>bin</code> 目录路径（例如 <code>D:\dev\mysql-8.0.27-winx64\bin</code>）添加到系统的 <code>Path</code> 环境变量中。</p>
+<p><img src="/2023/06/13/MySql/image-20220109160530595.png" alt="image-20220109160530595"></p>
+<h3 id="4-添加配置文件-my-ini【选做】"><a href="#4-添加配置文件-my-ini【选做】" class="headerlink" title="4. 添加配置文件 my.ini【选做】"></a>4. 添加配置文件 <code>my.ini</code>【选做】</h3><blockquote>
+<p>此步骤可选，如果不创建，MySql 会使用系统默认配置。</p>
+</blockquote>
+<p>在 MySQL 的根目录中，手动创建一个名为 <code>my.ini</code> 的文件。</p>
+<p><img src="/2023/06/13/MySql/image-20220301155716412.png" alt="image-20220301155716412"></p>
+<p>将以下内容复制到 <code>my.ini</code> 中，并<strong>务必修改 <code>basedir</code> 和 <code>datadir</code> 为你自己的实际路径</strong>。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">[mysqld]</span><br><span class="hljs-comment"># 设置3306端口</span><br><span class="hljs-attr">port</span>=<span class="hljs-string">3306</span><br><span class="hljs-comment"># 设置mysql的安装目录</span><br><span class="hljs-attr">basedir</span>=<span class="hljs-string">D:\\dev\\mysql-8.0.27-winx64</span><br><span class="hljs-comment"># 设置mysql数据库的数据的存放目录</span><br><span class="hljs-attr">datadir</span>=<span class="hljs-string">D:\\dev\\mysql-8.0.27-winx64\\data</span><br><span class="hljs-comment"># 允许最大连接数</span><br><span class="hljs-attr">max_connections</span>=<span class="hljs-string">200</span><br><span class="hljs-comment"># 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统</span><br><span class="hljs-attr">max_connect_errors</span>=<span class="hljs-string">10</span><br><span class="hljs-comment"># 服务端使用的字符集默认为UTF8</span><br><span class="hljs-attr">character-set-server</span>=<span class="hljs-string">utf8</span><br><span class="hljs-comment"># 创建新表时将使用的默认存储引擎</span><br><span class="hljs-attr">default-storage-engine</span>=<span class="hljs-string">INNODB</span><br><span class="hljs-comment"># 默认使用&quot;mysql_native_password&quot;插件认证</span><br><span class="hljs-attr">default_authentication_plugin</span>=<span class="hljs-string">mysql_native_password</span><br><br><span class="hljs-attr">[mysql]</span><br><span class="hljs-comment"># 设置mysql客户端默认字符集</span><br><span class="hljs-attr">default-character-set</span>=<span class="hljs-string">utf8</span><br><br><span class="hljs-attr">[client]</span><br><span class="hljs-comment"># 设置mysql客户端连接服务端时默认使用的端口</span><br><span class="hljs-attr">port</span>=<span class="hljs-string">3306</span><br><span class="hljs-attr">default-character-set</span>=<span class="hljs-string">utf8</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="1031-两个非重叠子数组的最大和-力扣（LeetCode）"><a href="#1031-两个非重叠子数组的最大和-力扣（LeetCode）" class="headerlink" title="1031. 两个非重叠子数组的最大和 - 力扣（LeetCode）"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-sum-of-two-non-overlapping-subarrays/">1031. 两个非重叠子数组的最大和 - 力扣（LeetCode）</a></h1><h2 id="前缀和-动态规划："><a href="#前缀和-动态规划：" class="headerlink" title="前缀和+动态规划："></a>前缀和+动态规划：</h2><p>首先用前缀数组可以快速求出数组中两点中的元素的和，首先应该想象到找到first的元素的和，去遍历second的和找到最大和时间复杂度O(n^2),应该不难想到。</p>
-<p>用动态规划去解决问题时，遍历一遍找到最大一个first的值，很简单就想到用一个</p>
-<p>sum&#x3D;max(sum,s[i]-s[i-first]);</p>
-<p>解决问题，</p>
-<p>但是问题是求两端的和</p>
-<p>有个方法很难想到，我反正是想不到，首先first与second的大小不同导致不清楚答案是谁在前谁在后</p>
-<p>所以分开考虑假如second在前，<strong>则有在每次找first的最大时刻后面更新答案</strong>，</p>
-<p>sum &#x3D; max(sum,s[i-first]-s[i-first-second]);</p>
-<p>ans &#x3D; max(ans,sum+s[i]-s[i-first]);</p>
-<p>同理另一种情况也是一样最终得出答案.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSumTwoNoOverlap</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> firstLen, <span class="hljs-type">int</span> secondLen)</span> </span>&#123;<br>        <span class="hljs-type">int</span> s[<span class="hljs-number">1001</span>],n = nums.<span class="hljs-built_in">size</span>();<br>        s[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,sum=<span class="hljs-number">0</span>;i&lt;=n;i++)<br>        &#123;<br>            sum+=nums[i<span class="hljs-number">-1</span>];<br>            s[i] = sum;<br>        &#125;   <br>        <span class="hljs-type">int</span> sum1=<span class="hljs-number">0</span>,sum2=<span class="hljs-number">0</span>,ans1=<span class="hljs-number">0</span>,ans2=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=firstLen+secondLen;i&lt;=n;i++)<br>        &#123;<br>            sum1 = <span class="hljs-built_in">max</span>(sum1,s[i-secondLen]-s[i-secondLen-firstLen]);<br>            ans1 = <span class="hljs-built_in">max</span>(ans1,sum1+s[i]-s[i-secondLen]);<br>            <br>            sum2 = <span class="hljs-built_in">max</span>(sum2,s[i-firstLen]-s[i-firstLen-secondLen]);<br>            ans2 = <span class="hljs-built_in">max</span>(ans2,sum2+s[i]-s[i-firstLen]);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(ans1,ans2);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="5-初始化数据库"><a href="#5-初始化数据库" class="headerlink" title="5. 初始化数据库"></a>5. 初始化数据库</h3><p>以<strong>管理员身份</strong>运行命令提示符 (CMD)。</p>
+<p><img src="/2023/06/13/MySql/image-20220301153607692.png" alt="image-20220301153607692"></p>
+<p>在 CMD 中执行以下命令，MySQL 会进行初始化并生成一个<strong>临时密码</strong>，请务必复制并保存好这个密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --initialize --console<br></code></pre></td></tr></table></figure>
 
+<p><img src="/2023/06/13/MySql/image-20220109161344549.png" alt="image-20220109161344549"></p>
+<h3 id="6-安装-MySql-服务"><a href="#6-安装-MySql-服务" class="headerlink" title="6. 安装 MySql 服务"></a>6. 安装 MySql 服务</h3><p>继续在管理员 CMD 中执行以下命令来安装 MySQL 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --install<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/13/MySql/image-20220109161553618.png" alt="image-20220109161553618"></p>
+<h3 id="7-启动服务"><a href="#7-启动服务" class="headerlink" title="7. 启动服务"></a>7. 启动服务</h3><p>使用以下命令启动 MySQL 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net start mysql<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/13/MySql/image-20220109161636471.png" alt="image-20220109161636471"></p>
+<h3 id="8-登录-MySql-并修改密码"><a href="#8-登录-MySql-并修改密码" class="headerlink" title="8. 登录 MySql 并修改密码"></a>8. 登录 MySql 并修改密码</h3><ol>
+<li><p>在 CMD 中，输入以下命令并按回车：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -uroot -p<br></code></pre></td></tr></table></figure></li>
+<li><p>提示 <code>Enter password:</code> 后，粘贴你之前保存的<strong>临时密码</strong>，然后按回车。</p>
+</li>
+<li><p>登录成功后，立即执行以下 SQL 语句来修改为您自己的新密码（例如 <code>12345678</code>）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">WITH</span> mysql_native_password <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;12345678&#x27;</span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="/2023/06/13/MySql/image-20220109162341732.png" alt="image-20220109162341732"></p>
+<h3 id="9-卸载-MySql（备用）"><a href="#9-卸载-MySql（备用）" class="headerlink" title="9. 卸载 MySql（备用）"></a>9. 卸载 MySql（备用）</h3><p>如果需要卸载 MySQL，请按以下步骤操作：</p>
+<ol>
+<li><strong>停止服务</strong> (管理员 CMD):<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">net stop mysql<br></code></pre></td></tr></table></figure></li>
+<li><strong>移除服务</strong> (管理员 CMD):<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysqld --remove<br></code></pre></td></tr></table></figure></li>
+<li><strong>手动删除</strong> MySQL 的安装文件夹。</li>
+</ol>
+<hr>
+<h2 id="可视化连接工具：Navicat"><a href="#可视化连接工具：Navicat" class="headerlink" title="可视化连接工具：Navicat"></a>可视化连接工具：Navicat</h2><p>为了更方便地管理数据库，我们可以使用图形化界面工具。Navicat 是其中非常流行的一款。</p>
+<h3 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h3><ul>
+<li><strong>官网下载</strong>: <a target="_blank" rel="noopener" href="https://www.navicat.com.cn/download/navicat-premium">https://www.navicat.com.cn/download/navicat-premium</a></li>
+<li><strong>安装</strong>: 下载后双击 <code>.exe</code> 文件，按提示进行可视化安装即可。</li>
+</ul>
+<h3 id="新建连接"><a href="#新建连接" class="headerlink" title="新建连接"></a>新建连接</h3><p><img src="/2023/06/13/MySql/image-20220109163327207.png" alt="image-20220109163327207"></p>
+<p>在 Navicat 中，点击”连接” -&gt; “MySQL”，然后输入连接名、主机（<code>localhost</code>）、端口（<code>3306</code>）、用户名（<code>root</code>）和你刚才设置的新密码，点击”连接测试”，成功后保存即可。</p>
+<p><img src="/2023/06/13/MySql/image-20220109163434245.png" alt="image-20220109163434245"></p>
+<hr>
+<h2 id="SQL-入门"><a href="#SQL-入门" class="headerlink" title="SQL 入门"></a>SQL 入门</h2><h3 id="数据库、表、数据的关系"><a href="#数据库、表、数据的关系" class="headerlink" title="数据库、表、数据的关系"></a>数据库、表、数据的关系</h3><p><img src="/2023/06/13/MySql/03.png" alt="03"></p>
+<ul>
+<li><strong>数据库 (Database)</strong>: 存储和管理数据的仓库，一个库可以包含多个数据表。</li>
+<li><strong>数据表 (Table)</strong>: 数据库中最重要的组成部分，由行和列组成，类似 Excel 表格。</li>
+<li><strong>数据 (Data)</strong>: 表中存储的一行行具体信息，是我们真正要管理的内容。</li>
+</ul>
+<h3 id="SQL-语言介绍"><a href="#SQL-语言介绍" class="headerlink" title="SQL 语言介绍"></a>SQL 语言介绍</h3><ul>
+<li><p><strong>什么是 SQL?</strong></p>
+<ul>
+<li><strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage，即<strong>结构化查询语言</strong>。</li>
+<li>它是操作所有关系型数据库的国际标准。不同的数据库可能会在标准 SQL 的基础上增加一些自己特有的语法，我们称之为”方言”。</li>
+</ul>
+</li>
+<li><p><strong>SQL 通用语法</strong></p>
+<ul>
+<li>SQL 语句可以单行或多行书写，通常以分号 (<code>;</code>) 结尾。</li>
+<li>可使用空格和缩进来增强语句的可读性。</li>
+<li>SQL 语句不区分大小写，但业界约定<strong>关键字使用大写</strong>，表名和列名使用小写。</li>
+<li><strong>注释</strong>:<ul>
+<li>单行注释: <code>-- 注释内容</code> 或 <code># 注释内容</code> (MySQL 特有)</li>
+<li>多行注释: <code>/* 注释内容 */</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -262,15 +364,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -326,7 +424,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/04/26/%E5%8A%9B%E6%89%A31031/index/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/13/MySql/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -340,18 +438,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/06/13/MySql/index/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/07/13/NAT_UPNP/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          MySql 全方位学习笔记
+          NAT与UPNP技术学习笔记
         
       </div>
     </a>
   
   
-    <a href="/2023/04/19/%E5%8A%9B%E6%89%A31043%E5%92%8C368/index/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">力扣1043和368</div>
+    <a href="/2023/04/26/%E5%8A%9B%E6%89%A31031/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">力扣1031</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -540,6 +638,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
@@ -576,18 +682,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -597,6 +691,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
               </li>
              
               <li class="article-tag-list-item">
