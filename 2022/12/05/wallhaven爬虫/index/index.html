@@ -24,22 +24,50 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>BSP开发：IIC选通技术深度解析 | 小齐的博客</title>
+  <title>wallhaven爬虫 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
+  <meta name="description" content="py爬取壁纸（setu）wallhaven网站爬取">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BSP开发：IIC选通技术深度解析">
-<meta property="og:url" content="http://example.com/2025/06/28/iic/index.html">
+<meta property="og:title" content="wallhaven爬虫">
+<meta property="og:url" content="http://example.com/2022/12/05/wallhaven%E7%88%AC%E8%99%AB/index/index.html">
 <meta property="og:site_name" content="小齐的博客">
-<meta property="og:description" content="在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 IIC 选通 (IIC Multiplexing) 技术来解决这一问题。">
+<meta property="og:description" content="py爬取壁纸（setu）wallhaven网站爬取">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-27T17:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-27T17:29:49.698Z">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-1p3kjg.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-2yemrm.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk7q7.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8dw.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8jl.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8m7.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8y6.png">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk38l.png">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk39l.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk89l.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk326.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk356.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkd5l.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dke3w.png">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxlw.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxp6.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-7p6zqy.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d611k.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d612x.png">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-gp8yz7.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5d9y.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5z3w.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-kxwzm7.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-l8ml8y.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-m3dq31.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5x8z5.png">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5xpg7.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-p98e3j.jpg">
+<meta property="og:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-p9816j.jpg">
+<meta property="article:published_time" content="2022-12-04T16:19:14.000Z">
+<meta property="article:modified_time" content="2025-06-27T19:35:18.131Z">
 <meta property="article:author" content="齐星尘">
-<meta property="article:tag" content="BSP">
-<meta property="article:tag" content="IIC">
-<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-1p3kjg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
   
@@ -182,67 +210,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iic" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-wallhaven爬虫/index" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BSP开发：IIC选通技术深度解析
+      wallhaven爬虫
     </h1>
   
 
         
-        <a href="/2025/06/28/iic/" class="archive-article-date">
-  	<time datetime="2025-06-27T17:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-06-28</time>
+        <a href="/2022/12/05/wallhaven%E7%88%AC%E8%99%AB/index/" class="archive-article-date">
+  	<time datetime="2022-12-04T16:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在嵌入式系统开发中，IIC (I²C) 总线是连接微控制器 (MCU) 与各种外设（如传感器、EEPROM 等）的常用通信协议。然而，当多个设备地址相同时，或需要挂载大量设备时，单一的 IIC 总线便会遇到瓶颈。本文将深入探讨如何通过 <strong>IIC 选通 (IIC Multiplexing)</strong> 技术来解决这一问题。</p>
-<span id="more"></span>
+        <h1 id="py爬取壁纸（setu）"><a href="#py爬取壁纸（setu）" class="headerlink" title="py爬取壁纸（setu）"></a>py爬取壁纸（setu）</h1><h2 id="wallhaven网站爬取"><a href="#wallhaven网站爬取" class="headerlink" title="wallhaven网站爬取"></a>wallhaven网站爬取</h2><span id="more"></span>
 
-<h2 id="一、为什么需要-IIC-选通？"><a href="#一、为什么需要-IIC-选通？" class="headerlink" title="一、为什么需要 IIC 选通？"></a>一、为什么需要 IIC 选通？</h2><p>IIC 选通主要为了解决两个核心问题：</p>
+<p>刚开始爬的时候一切顺利，但最后遇到了反爬虫机制，就是必须要登录，否则无法显示一些色图。</p>
+<p>首先想到的就是 py 模拟登录，这里说两种解法：</p>
 <ol>
-<li><strong>地址冲突</strong>：多个同型号的 IIC 设备拥有相同的、固定的设备地址，无法直接挂载在同一条总线上。</li>
-<li><strong>总线扩展</strong>：需要挂载的设备数量超过了 IIC 总线的负载能力或地址空间。</li>
+<li><p>在 <code>post</code> 请求中把账号，密码输入，一般都不会成功，因为会有 JS 加密。这里可以解密，但具体我也不了解就不往下说了。</p>
+</li>
+<li><p>可行且简单的方法，用 Cookie 绕过去。<br>先说一下 Cookie 的概念：在客户端对服务器发送请求，服务器会产生客户端的记录，来得知客户端之前做过什么。就比如你登录了 Bilibili，关了之后再进入就免登录了，这之间就是 Cookie 的功劳，让服务器记得你。<br>回归正题，模拟登录就是首先你要登录这个网站，再记录 Cookie，爬取的 <code>headers</code> 填上 Cookie，然后就进入登录后的界面了，就可以下载图片了。</p>
+</li>
 </ol>
-<p>通过引入 **IIC 选通器 (IIC Multiplexer&#x2F;Switch)**，例如经典的 <code>PCA9548A</code> (8路) 或 <code>PCA9546A</code> (4路)，我们就可以像切换电视频道一样，选择性地与某一个 IIC 设备进行通信。</p>
-<h2 id="二、IIC-选通器的工作原理"><a href="#二、IIC-选通器的工作原理" class="headerlink" title="二、IIC 选通器的工作原理"></a>二、IIC 选通器的工作原理</h2><p>IIC 选通器本身也是一个标准的 IIC 从设备，拥有自己唯一的设备地址。主控 MCU 通过向这个特定地址发送控制命令，来打开或关闭其内部的某个或某些通道，从而将主 IIC 总线连接到指定的子总线上。</p>
-<blockquote>
-<p><strong>核心流程：</strong> 主控 MCU → IIC 选通器 → 选通指定通道 → 主控 MCU 与目标设备通信。</p>
-</blockquote>
-<h2 id="三、BSP-层代码实现"><a href="#三、BSP-层代码实现" class="headerlink" title="三、BSP 层代码实现"></a>三、BSP 层代码实现</h2><p>在板级支持包 (BSP) 的设计中，我们需要将 IIC 选通的操作封装成简洁的接口，供上层应用调用。</p>
-<p>以下是以 <code>PCA9548A</code> 为例的伪代码实现：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> PCA9548A_ADDR 0x70 <span class="hljs-comment">// 选通器的 IIC 地址</span></span><br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 选择要打开的 IIC 通道</span><br><span class="hljs-comment"> * @param channel 要选择的通道号 (0-7)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_select_channel</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel)</span><br>&#123;<br>  <span class="hljs-comment">// 控制字节的每一位对应一个通道，置 1 表示打开</span><br>  <span class="hljs-type">uint8_t</span> control_byte = <span class="hljs-number">1</span> &lt;&lt; channel; <br>  iic_master_write(PCA9548A_ADDR, &amp;control_byte, <span class="hljs-number">1</span>);<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * @brief 从指定通道的设备读取数据</span><br><span class="hljs-comment"> * @param channel 通道号</span><br><span class="hljs-comment"> * @param dev_addr 目标设备地址</span><br><span class="hljs-comment"> * @param buf 数据缓冲区</span><br><span class="hljs-comment"> * @param len 数据长度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">iic_device_read</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>  <span class="hljs-comment">// 步骤1: 选通指定的 IIC 通道</span><br>  iic_select_channel(channel);<br>  <br>  <span class="hljs-comment">// 步骤2: 在选通的通道上与目标设备通信</span><br>  iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> parsel<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">for</span> shuzi <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">75</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在下载第<span class="hljs-subst">&#123;shuzi&#125;</span>页&quot;</span>)<br>    url = <span class="hljs-string">&#x27;https://wallhaven.cc/hot?page=&#x27;</span><br>    <br>    <span class="hljs-comment"># 头请求就不展示了</span><br>    <span class="hljs-comment"># ！！！这个网站的反爬虫机制就是登录，用cookie绕过登录----&gt;</span><br>    headers = &#123;<br>        <span class="hljs-string">&#x27;user-agent&#x27;</span>: <span class="hljs-string">&#x27;your-user-agent-string&#x27;</span>,<br>        <span class="hljs-string">&#x27;cookie&#x27;</span> : <span class="hljs-string">&#x27;your-cookie-string&#x27;</span> <br>    &#125;<br><br>    <span class="hljs-comment"># 此处的 cook 变量未定义，在实际运行时需要替换为您的 cookie 字典</span><br>    req = requests.get(url+<span class="hljs-built_in">str</span>(shuzi),headers=headers) <br><br>    <span class="hljs-built_in">print</span>(url+<span class="hljs-built_in">str</span>(shuzi))<br>    sele = parsel.Selector(req.text)<br>    lis = sele.css(<span class="hljs-string">&#x27;.preview&#x27;</span>)<br><br>    <span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> lis:<br><br>        pic_url = li.css(<span class="hljs-string">&#x27;.preview ::attr(href)&#x27;</span>).get()<br><br>        <span class="hljs-built_in">print</span>(pic_url)<br>        pos = requests.get(pic_url,headers=headers,verify=<span class="hljs-literal">False</span>)<br>        pic_sele = parsel.Selector(pos.text)<br>        pic_lis = pic_sele.xpath(<span class="hljs-string">&#x27;//div[@class=&quot;scrollbox&quot;]//img/@src&#x27;</span>).getall()<br>        <span class="hljs-built_in">print</span>(pic_lis)<br>        <span class="hljs-keyword">for</span> pic_urll <span class="hljs-keyword">in</span> pic_lis:<br>            pic = requests.get(pic_urll,headers=headers,verify=<span class="hljs-literal">False</span>).content<br>            pic_name = pic_urll.split(<span class="hljs-string">&#x27;/&#x27;</span>)[-<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">f&#x27;..//<span class="hljs-subst">&#123;pic_name&#125;</span>&#x27;</span>):<br>                <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">f&#x27;..//<span class="hljs-subst">&#123;pic_name&#125;</span>&#x27;</span>,<span class="hljs-string">&#x27;wb&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>                    f.write(pic)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;  完成图片&#x27;</span>+pic_name)<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27; 已存在&#x27;</span>+pic_name)<br></code></pre></td></tr></table></figure>
 
-<h2 id="四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器"><a href="#四、进阶场景：多级-IIC-选通-CPLD-IIC-选通器" class="headerlink" title="四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)"></a>四、进阶场景：多级 IIC 选通 (CPLD + IIC 选通器)</h2><p>在某些复杂的硬件设计中，可能会遇到需要操作两次 IIC 才能完成选通的场景。例如，硬件手册要求先向 CPLD (地址 <code>0x21</code>) 写入一个值，再向 IIC 选通器 (地址 <code>0x70</code>) 写入另一个值。</p>
-<p>这通常意味着系统中存在一个“多级选通”的结构。CPLD 在这里扮演了<strong>第一级开关</strong>或<strong>总闸</strong>的角色。不打开这个总闸，IIC 信号可能根本无法到达下一级的 IIC 选通器。</p>
-<h4 id="硬件链路分析"><a href="#硬件链路分析" class="headerlink" title="硬件链路分析"></a>硬件链路分析</h4><p>这个硬件链路可以可视化为：<br>+———–+ +—————-+ +————————–+ +———–+<br>(一级开关)		(二级开关)		<br>+———–+ +—————-+ +————————–+ +———–+</p>
-<h4 id="操作流程分析"><a href="#操作流程分析" class="headerlink" title="操作流程分析"></a>操作流程分析</h4><ol>
-<li>**操作 CPLD (0x21)**：这一步的目的是打开“总闸”，将主控的 IIC 总线物理连接到下一级的 IIC 选通器。</li>
-<li>**操作 IIC 选通器 (0x70)**：在总闸打开后，再操作这个“二级开关”，精细地选择最终要通信的目标设备通道。</li>
-</ol>
-<h4 id="伪代码实现"><a href="#伪代码实现" class="headerlink" title="伪代码实现"></a>伪代码实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> CPLD_IIC_ADDR 0x21</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MUX_IIC_ADDR 0x70</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">access_nested_iic_device</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> cpld_cmd, <span class="hljs-type">uint8_t</span> mux_channel, <span class="hljs-type">uint8_t</span> dev_addr, <span class="hljs-type">uint8_t</span> *buf, <span class="hljs-type">uint8_t</span> len)</span><br>&#123;<br>    <span class="hljs-comment">// 步骤1: 操作 CPLD，打开 IIC 物理链路</span><br>    iic_master_write(CPLD_IIC_ADDR, &amp;cpld_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤2: 操作 IIC 选通器，选择具体通道</span><br>    <span class="hljs-type">uint8_t</span> mux_cmd = <span class="hljs-number">1</span> &lt;&lt; mux_channel;<br>    iic_master_write(MUX_IIC_ADDR, &amp;mux_cmd, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 步骤3: 访问最终的目标设备</span><br>    iic_master_read(dev_addr, buf, len);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="五、设计建议与常见问题"><a href="#五、设计建议与常见问题" class="headerlink" title="五、设计建议与常见问题"></a>五、设计建议与常见问题</h2><blockquote>
-<h3 id="bulb-设计建议"><a href="#bulb-设计建议" class="headerlink" title=":bulb: 设计建议"></a>:bulb: 设计建议</h3><ol>
-<li><strong>抽象接口</strong>：将复杂的选通逻辑封装成简洁的接口，上层应用无需关心底层细节。</li>
-<li><strong>互斥保护</strong>：在多任务环境 (RTOS) 中，必须为 IIC 总线操作（包括选通和设备访问）添加互斥锁（Mutex），防止竞态条件。</li>
-<li><strong>错误处理</strong>：完整地处理选通失败、设备无响应 (NACK) 等异常情况，保证系统的健壮性。</li>
-</ol>
-</blockquote>
-<blockquote>
-<h3 id="warning-常见问题"><a href="#warning-常见问题" class="headerlink" title=":warning: 常见问题"></a>:warning: 常见问题</h3><ul>
-<li><strong>忘记切换&#x2F;关闭通道</strong>：访问完一个设备后，未切换或关闭通道就去访问另一通道上的设备，导致访问错误。</li>
-<li><strong>地址冲突</strong>：IIC 选通器自身的地址与总线上的某个外设地址重复。</li>
-<li><strong>总线拉电流能力</strong>：挂载设备过多或总线过长，导致上拉电阻不匹配，波形异常，通信失败。</li>
-</ul>
-</blockquote>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>IIC 选通是嵌入式系统中解决 IIC 总线地址冲突和扩展问题的关键技术。在 BSP 开发中，我们需要深刻理解其硬件原理，封装稳定可靠的软件接口，并充分考虑多级选通、多任务访问和错误处理等情况，才能构建出高效、健壮的嵌入式系统。</p>
+<h2 id="图片壁纸需要自取"><a href="#图片壁纸需要自取" class="headerlink" title="图片壁纸需要自取"></a>图片壁纸需要自取</h2><p>下面是wallhaven网站热门壁纸。果然，某些图片是第一生产力。因为不能上传太多，就随便传了几张，可以尝试自己爬取哦。</p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-1p3kjg.jpg" alt="wallhaven-1p3kjg"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-2yemrm.jpg" alt="wallhaven-2yemrm"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk7q7.jpg" alt="wallhaven-6dk7q7"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8dw.jpg" alt="wallhaven-6dk8dw"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8jl.jpg" alt="wallhaven-6dk8jl"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8m7.jpg" alt="wallhaven-6dk8m7"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk8y6.png" alt="wallhaven-6dk8y6"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk38l.png" alt="wallhaven-6dk38l"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk39l.jpg" alt="wallhaven-6dk39l"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk89l.jpg" alt="wallhaven-6dk89l"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk326.jpg" alt="wallhaven-6dk326"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dk356.jpg" alt="wallhaven-6dk356"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkd5l.jpg" alt="wallhaven-6dkd5l"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dke3w.png" alt="wallhaven-6dke3w"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxlw.jpg" alt="wallhaven-6dkxlw"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-6dkxp6.jpg" alt="wallhaven-6dkxp6"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-7p6zqy.jpg" alt="wallhaven-7p6zqy"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d611k.jpg" alt="wallhaven-9d611k"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-9d612x.png" alt="wallhaven-9d612x"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-gp8yz7.jpg" alt="wallhaven-gp8yz7"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5d9y.jpg" alt="wallhaven-jx5d9y"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-jx5z3w.jpg" alt="wallhaven-jx5z3w"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-kxwzm7.jpg" alt="wallhaven-kxwzm7"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-l8ml8y.jpg" alt="wallhaven-l8ml8y"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-m3dq31.jpg" alt="wallhaven-m3dq31"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5x8z5.png" alt="wallhaven-o5x8z5"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-o5xpg7.jpg" alt="wallhaven-o5xpg7"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-p98e3j.jpg" alt="wallhaven-p98e3j"></p>
+<p><img src="/images/wallhaven%E7%88%AC%E8%99%AB/wallhaven-p9816j.jpg" alt="wallhaven-p9816j"></p>
 
       
 
@@ -287,15 +316,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BSP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IIC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">嵌入式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -351,7 +372,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/06/28/iic/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/12/05/wallhaven%E7%88%AC%E8%99%AB/index/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -365,9 +386,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2023/04/19/%E5%8A%9B%E6%89%A31043%E5%92%8C368/index/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          力扣1043和368
+        
+      </div>
+    </a>
   
-    <a href="/2024/03/23/qidianliaotian/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">起点聊天室详细介绍以及开发日志</div>
+  
+    <a href="/2022/12/01/%E9%BD%90%E6%8C%AF%E8%B1%AA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小齐的第一篇博客</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -556,14 +586,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
@@ -573,6 +595,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NAT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,10 +618,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -604,6 +630,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -612,11 +642,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">前缀和</a>
               </li>
             
             <div class="clearfix"></div>
