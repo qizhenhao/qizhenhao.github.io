@@ -47,6 +47,21 @@ npm install
 > **注意**：如果安装速度过慢或失败，可以尝试切换 npm 镜像源，例如淘宝镜像：
 > `npm install --registry=https://registry.npmmirror.com`
 
+### 
+
+### 第四步：拉去子库主题
+
+在Theme是在theme文件夹中的子库。
+
+```shell
+git submodule init
+git submodule update
+# 或者
+git submodule update --init
+```
+
+
+
 至此，您的本地博客环境已完全搭建好！
 
 ---
@@ -85,10 +100,10 @@ Hexo 会在 `source/_posts` 目录下生成一个名为 `您的文章标题.md` 
     ```bash
     # 添加所有改动到暂存区
     git add .
-
+    
     # 创建一个提交，并写上本次改动的说明
     git commit -m "这里写下您的改动说明，例如：完成《xxx》文章"
-
+    
     # 推送到 GitHub
     git push origin source
     ```
