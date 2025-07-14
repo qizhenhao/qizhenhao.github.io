@@ -24,15 +24,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: NAT | 小齐的博客</title>
+  <title>HCIA：数据链路层与MAC地址 | 小齐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小齐的博客">
-<meta property="og:url" content="http://example.com/tags/NAT/index.html">
+  <meta name="description" content="今天是看了HCIA的第三节课，加油！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HCIA：数据链路层与MAC地址">
+<meta property="og:url" content="http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/index.html">
 <meta property="og:site_name" content="小齐的博客">
+<meta property="og:description" content="今天是看了HCIA的第三节课，加油！">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709230016170.png">
+<meta property="og:image" content="http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709230529314.png">
+<meta property="og:image" content="http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709234157752.png">
+<meta property="article:published_time" content="2025-07-09T16:15:00.000Z">
+<meta property="article:modified_time" content="2025-07-14T15:06:26.030Z">
 <meta property="article:author" content="齐星尘">
+<meta property="article:tag" content="HCIA">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709230016170.png">
   
     <link rel="alternative" href="/atom.xml" title="小齐的博客" type="application/atom+xml">
   
@@ -175,68 +185,252 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hcia/数据链路层与MAC地址" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/07/13/NAT_UPNP/index/" class="archive-article-date">
-  	<time datetime="2023-07-13T13:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-07-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/07/13/NAT_UPNP/index/">NAT与UPNP技术学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      HCIA：数据链路层与MAC地址
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/" class="archive-article-date">
+  	<time datetime="2025-07-09T16:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天是看了HCIA的第三节课，加油！</p>
+<span id="more"></span>
+
+<h1 id="数据链路层与MAC地址"><a href="#数据链路层与MAC地址" class="headerlink" title="数据链路层与MAC地址"></a>数据链路层与MAC地址</h1><h2 id="以太网帧结构"><a href="#以太网帧结构" class="headerlink" title="以太网帧结构"></a>以太网帧结构</h2><p><img src="/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709230016170.png" alt="image-20250709230016170"></p>
+<h3 id="Ethernet-II"><a href="#Ethernet-II" class="headerlink" title="Ethernet_II"></a>Ethernet_II</h3><p><strong>mac地址</strong>：物理地址：网卡地址； 每个设备出厂时，抄录进网卡芯片中，出厂自带，在一个以太网中，用来表示一个设备在什么位置。</p>
+<p><strong>smac</strong>：原mac； dmac：目的mac</p>
+<p><strong>Type</strong>：类型 表示上层协议</p>
+<p><strong>FCS</strong>：校验位，CRC循环冗余校验。ps:这个抓包一般是抓不到的，需要硬件与驱动支持，因为硬件一般校验这个位置不行就直接丢弃了到不了操作系统。</p>
+<p><strong>发送者的动作</strong>：有发送者填充源MAC，以及type表示上层协议，以及CRC冗余校验，</p>
+<p><strong>接收者的动作</strong>：1、首先看目的MAC地址，是否是自己的mac，如果不是则丢弃，是的话继续。2、将数据进行CRC检验，对比FCS字段，如果不同则丢弃。3、查看type字段，由type字段标识上层协议处理。</p>
+<h3 id="IEEE802-3"><a href="#IEEE802-3" class="headerlink" title="IEEE802.3"></a>IEEE802.3</h3><p><img src="/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709230529314.png" alt="image-20250709230529314"></p>
+<p><strong>Length</strong>：标识上层长度</p>
+<p><strong>LLC</strong>：逻辑链路控制</p>
+<p>​	D.SAP 目标服务接入点，就是目标type</p>
+<p>​	<strong>S.SAP</strong> 原服务接入点，就是源type</p>
+<p>​	Control：保留值：0x03</p>
+<p><strong>SNAP</strong>：子网络服务接入点，如果采用公有化协议，这个字段是看不到的。</p>
+<p>​	Org Code： 机构标识。</p>
+<p>​	<strong>Type</strong>：私有化的协议标识。</p>
+<blockquote>
+<p><strong>字段区分机制</strong>：</p>
+<ol>
+<li><strong>DSAP&#x2F;SSAP值0xAA</strong>是SNAP存在的关键标志。当这两个字段均为0xAA时，表示后续5字节的SNAP头部存在。</li>
+<li>标准协议（如IP）会使用非0xAA的SAP值（如0x06），此时帧格式直接跳过SNAP部分。</li>
+</ol>
+</blockquote>
+<h3 id="Data长度"><a href="#Data长度" class="headerlink" title="Data长度"></a>Data长度</h3><p>因为802.3对比Ethernet_II少了8个字节，因为数据链路层的封装的数据多了8个字节</p>
+<p>MTU是最大传输单元，工作与每条链路的。</p>
+<p><img src="/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/image-20250709234157752.png" alt="image-20250709234157752"></p>
+<blockquote>
+<p>可以分片就分片，不能就丢弃。看上层是否支持</p>
+</blockquote>
+<p>一帧最少64字节有时需要<strong>pading</strong>：填充0</p>
+<h3 id="如何分辨是什么协议的帧"><a href="#如何分辨是什么协议的帧" class="headerlink" title="如何分辨是什么协议的帧"></a>如何分辨是什么协议的帧</h3><p>主要看 Length&#x2F;Type 这个字段， 大于等于 1536 就是Ethernet_II，小于等于 1500 就是802.3的帧。</p>
+<h3 id><a href="#" class="headerlink" title></a></h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>递一支烟<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/0B44D864CB9D2E10183759742A37138E.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/F4CDF8297E6116B089FA5E99DD4E17F4.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HCIA</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">P2P</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NAT</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/07/10/hcia/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8EMAC%E5%9C%B0%E5%9D%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2025/07/14/hcia/MAC%E5%9C%B0%E5%9D%80%E5%8A%A0%E7%BD%91%E7%BB%9C%E5%B1%82/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          HCIA：MAC地址补充和网络层
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2025/07/08/hcia/%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85%E5%92%8C%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HCIA：数据封装与传输介质</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+
+   <section id="comments" class="comments">
+     <style>
+       .comments{margin:30px;padding:10px;background:#fff}
+       @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+     </style>
+     <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+	var randNum =  Math.floor(Math.random() * 10) + 1;
+	window.onload = function() {
+
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "pa80VmFuVAAfDPPhcZRPDhwf-gzGzoHsz",
+            app_key: "VyywdGldMrWr6sPqmkh9676u",
+            placeholder: "Just go go",
+            avatar:"monsterid"
+        });
+    }
+</script>
+
+ </section>
 
 
           </div>
@@ -263,9 +457,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
